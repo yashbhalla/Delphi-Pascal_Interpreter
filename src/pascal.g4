@@ -247,7 +247,7 @@ variableDeclarationPart
     ;
 
 variableDeclaration
-    : identifierList COLON type_
+    : identifier ':' typeIdentifier
     ;
 
 procedureAndFunctionDeclarationPart

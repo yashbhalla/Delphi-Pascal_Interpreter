@@ -18,6 +18,10 @@ classBlock: ('private' fieldList)? 'public' (
 		| methodList
 	)+;
 
+classDeclaration: 'class' identifier classBlock;
+
+variableDeclaration: identifier ':' typeIdentifier;
+
 // Field list
 fieldList: (variableDeclaration ';')+;
 
