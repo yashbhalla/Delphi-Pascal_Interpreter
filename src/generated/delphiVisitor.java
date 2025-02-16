@@ -10,23 +10,29 @@ import org.antlr.v4.runtime.tree.ParseTreeVisitor;
  */
 public interface delphiVisitor<T> extends ParseTreeVisitor<T> {
 	/**
-	 * Visit a parse tree produced by {@link delphiParser#constructorDeclaration}.
+	 * Visit a parse tree produced by {@link delphiParser#program}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitConstructorDeclaration(delphiParser.ConstructorDeclarationContext ctx);
+	T visitProgram(delphiParser.ProgramContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link delphiParser#destructorDeclaration}.
+	 * Visit a parse tree produced by {@link delphiParser#classDeclaration}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitDestructorDeclaration(delphiParser.DestructorDeclarationContext ctx);
+	T visitClassDeclaration(delphiParser.ClassDeclarationContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link delphiParser#classBlock}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitClassBlock(delphiParser.ClassBlockContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link delphiParser#variableDeclaration}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitVariableDeclaration(delphiParser.VariableDeclarationContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link delphiParser#fieldList}.
 	 * @param ctx the parse tree
@@ -46,23 +52,59 @@ public interface delphiVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitMethodDeclaration(delphiParser.MethodDeclarationContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link delphiParser#constructorDeclaration}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitConstructorDeclaration(delphiParser.ConstructorDeclarationContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link delphiParser#destructorDeclaration}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitDestructorDeclaration(delphiParser.DestructorDeclarationContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link delphiParser#objectInstantiation}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitObjectInstantiation(delphiParser.ObjectInstantiationContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link delphiParser#block}.
+	 * Visit a parse tree produced by {@link delphiParser#methodCall}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitBlock(delphiParser.BlockContext ctx);
+	T visitMethodCall(delphiParser.MethodCallContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link delphiParser#program}.
+	 * Visit a parse tree produced by {@link delphiParser#fieldAccess}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitProgram(delphiParser.ProgramContext ctx);
+	T visitFieldAccess(delphiParser.FieldAccessContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link delphiParser#readStatement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitReadStatement(delphiParser.ReadStatementContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link delphiParser#writeStatement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitWriteStatement(delphiParser.WriteStatementContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link delphiParser#identifier}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitIdentifier(delphiParser.IdentifierContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link delphiParser#typeIdentifier}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitTypeIdentifier(delphiParser.TypeIdentifierContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link delphiParser#programHeading}.
 	 * @param ctx the parse tree
@@ -70,11 +112,11 @@ public interface delphiVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitProgramHeading(delphiParser.ProgramHeadingContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link delphiParser#identifier}.
+	 * Visit a parse tree produced by {@link delphiParser#block}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitIdentifier(delphiParser.IdentifierContext ctx);
+	T visitBlock(delphiParser.BlockContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link delphiParser#usesUnitsPart}.
 	 * @param ctx the parse tree
@@ -202,12 +244,6 @@ public interface delphiVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitSubrangeType(delphiParser.SubrangeTypeContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link delphiParser#typeIdentifier}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitTypeIdentifier(delphiParser.TypeIdentifierContext ctx);
-	/**
 	 * Visit a parse tree produced by {@link delphiParser#structuredType}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -315,12 +351,6 @@ public interface delphiVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitVariableDeclarationPart(delphiParser.VariableDeclarationPartContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link delphiParser#variableDeclaration}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitVariableDeclaration(delphiParser.VariableDeclarationContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link delphiParser#procedureAndFunctionDeclarationPart}.
 	 * @param ctx the parse tree

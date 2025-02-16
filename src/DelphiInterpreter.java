@@ -1,5 +1,8 @@
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.*;
+
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.util.*;
 
 public class DelphiInterpreter extends delphiBaseListener {
@@ -7,15 +10,33 @@ public class DelphiInterpreter extends delphiBaseListener {
     private Map<String, Object> variables = new HashMap<>();
     private Scanner scanner = new Scanner(System.in);
 
+    public static void main(String[] args) throws Exception {
+        String inputFile = args.length > 0 ? args[0] : "test/test1.pas";
+        InputStream is = new FileInputStream(inputFile);
+
+        // Create a lexer and parser for the input
+        delphiLexer lexer = new delphiLexer(CharStreams.fromStream(is));
+        CommonTokenStream tokens = new CommonTokenStream(lexer);
+        delphiParser parser = new delphiParser(tokens);
+
+        // Parse the input and create a parse tree
+        ParseTree tree = parser.program();
+
+        // Walk the parse tree with your custom listener
+        ParseTreeWalker walker = new ParseTreeWalker();
+        DelphiInterpreter interpreter = new DelphiInterpreter();
+        walker.walk(interpreter, tree);
+    }
+
     @Override
     public void enterClassDeclaration(delphiParser.ClassDeclarationContext ctx) {
-        String className = ctx.identifier().getText();
+        String className = ctx.identifier(0).getText();
         classes.put(className, new ClassInfo(className));
     }
 
     @Override
     public void enterConstructorDeclaration(delphiParser.ConstructorDeclarationContext ctx) {
-        String className = ctx.identifier().getText();
+        String className = ctx.identifier(0).getText();
         ClassInfo classInfo = classes.get(className);
         if (classInfo != null) {
             classInfo.setConstructor(ctx);
@@ -34,7 +55,7 @@ public class DelphiInterpreter extends delphiBaseListener {
 
     @Override
     public void enterVariableDeclaration(delphiParser.VariableDeclarationContext ctx) {
-        String varName = ctx.identifier().getText();
+        String varName = ctx.id.getText(); // Updated to use named subrule "id"
         variables.put(varName, null);
     }
 

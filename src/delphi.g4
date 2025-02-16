@@ -6,39 +6,91 @@ options {
 
 import pascal;
 
-// Constructor and destructor
-constructorDeclaration:
-	'constructor' identifier '(' formalParameterList? ')' ';' block;
+// Parser Rules
+program: classDeclaration+ EOF;
 
-destructorDeclaration: 'destructor' identifier ';' block;
+// Enhanced class declaration with inheritance
+classDeclaration:
+	CLASS identifier (EXTENDS identifier)? classBlock;
 
-// Class block
-classBlock: ('private' fieldList)? 'public' (
-		fieldList
-		| methodList
-	)+;
+// Enhanced class block with proper encapsulation
+classBlock:
+	BEGIN (PRIVATE fieldList?)? (
+		PUBLIC (fieldList | methodList)+
+	)? (PROTECTED (fieldList | methodList)*)? END;
 
-classDeclaration: 'class' identifier classBlock;
+// Enhanced variable declaration with type checking
+variableDeclaration: id = identifier COLON typeIdentifier;
 
-variableDeclaration: identifier ':' typeIdentifier;
+// Enhanced field list
+fieldList: (variableDeclaration SEMI)+;
 
-// Field list
-fieldList: (variableDeclaration ';')+;
+// Enhanced method list
+methodList: (methodDeclaration SEMI)+;
 
-// Method list
-methodList: (methodDeclaration ';')+;
-
-// Method declaration
+// Enhanced method declaration
 methodDeclaration:
-	procedureAndFunctionDeclaration
-	| constructorDeclaration
-	| destructorDeclaration;
+	(VIRTUAL | OVERRIDE)? (
+		procedureAndFunctionDeclaration
+		| constructorDeclaration
+		| destructorDeclaration
+	);
 
-// Object instantiation
+// Enhanced constructor declaration
+constructorDeclaration:
+	CONSTRUCTOR identifier LPAREN formalParameterList? RPAREN SEMI (
+		INHERITED identifier LPAREN actualParameterList? RPAREN SEMI
+	)? block;
+
+// Enhanced destructor declaration
+destructorDeclaration:
+	DESTRUCTOR identifier SEMI (INHERITED DESTROY SEMI)? block;
+
+// Enhanced object instantiation with constructor calls
 objectInstantiation:
-	identifier ':=' 'new' identifier '(' actualParameterList? ')';
+	identifier ASSIGN NEW identifier LPAREN actualParameterList? RPAREN;
 
-// Extend the existing block rule to include object instantiation and statements.
-block:
-	compoundStatement
-	| 'begin' (variableDeclaration | objectInstantiation)* statementSequence 'end';
+// Enhanced method call
+methodCall:
+	identifier DOT identifier LPAREN actualParameterList? RPAREN;
+
+// Enhanced field access
+fieldAccess: identifier DOT identifier;
+
+// IO specific rules
+readStatement:
+	READLN LPAREN identifier (COMMA identifier)* RPAREN;
+
+writeStatement:
+	WRITELN LPAREN (STRING_LITERAL | expression) (
+		COMMA (STRING_LITERAL | expression)
+	)* RPAREN;
+
+// Additional Lexer Rules
+CLASS: 'CLASS';
+EXTENDS: 'EXTENDS';
+VIRTUAL: 'VIRTUAL';
+OVERRIDE: 'OVERRIDE';
+CONSTRUCTOR: 'CONSTRUCTOR';
+DESTRUCTOR: 'DESTRUCTOR';
+INHERITED: 'INHERITED';
+DESTROY: 'DESTROY';
+NEW: 'NEW';
+READLN: 'READLN';
+WRITELN: 'WRITELN';
+PUBLIC: 'PUBLIC';
+PRIVATE: 'PRIVATE';
+PROTECTED: 'PROTECTED';
+
+identifier: IDENTIFIER;
+IDENTIFIER: [a-zA-Z_][a-zA-Z0-9_]*;
+typeIdentifier: IDENTIFIER;
+STRING_LITERAL: '"' .*? '"';
+SEMI: ';';
+COLON: ':';
+LPAREN: '(';
+RPAREN: ')';
+ASSIGN: ':=';
+DOT: '.';
+
+WS: [ \t\r\n]+ -> skip;
