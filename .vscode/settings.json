@@ -1,0 +1,11 @@
+{
+    "antlr4.generation": {
+      "mode": "external",
+      "outputDir": "src/generated",
+      "language": "Java"
+    },
+    "java.project.referencedLibraries": [
+        "lib/antlr-4.9.3-complete.jar",
+        "src/generated/*.java"    
+    ]
+}
