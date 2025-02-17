@@ -1,5 +1,4 @@
-program Test1;
-
+program test1;
 type
     Person = class
     private
@@ -23,8 +22,14 @@ end;
 
 var
     john: Person;
+    age: integer;
 
 begin
     john := new Person('John Doe', 30);
     john.PrintInfo;
+    age := 25;
+    writeln('Age: ', age);
+    readln(age);
+    writeln('New Age: ', age);
 end.
+
