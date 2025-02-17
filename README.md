@@ -19,3 +19,7 @@ This project implements a subset of Delphi features as an extension of Pascal us
 - `test1.pas`: Demonstrates basic class and object instantiation
 - `test2.pas`: Shows encapsulation and input/output functionality
 
+# To Run
+java -jar lib/antlr-4.9.3-complete.jar -o src/generated -visitor -listener src/delphi.g4
+javac -cp "lib/antlr-4.9.3-complete.jar:src:src/generated" src/DelphiInterpreter.java -d src
+java -cp "lib/antlr-4.9.3-complete.jar:src:src/generated" DelphiInterpreter test/test1.pas
