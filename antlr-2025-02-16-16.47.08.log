@@ -1,0 +1,550 @@
+2025-02-16 16:47:08:143 grammar LogManager.java:25 load pascal from src/delphi.g4
+2025-02-16 16:47:08:152 grammar LogManager.java:25 before: (COMBINED_GRAMMAR delphi (OPTIONS (= language Java)) (import pascal) (RULES (RULE program (BLOCK (ALT (+ (BLOCK (ALT classDeclaration))) EOF))) (RULE classDeclaration (BLOCK (ALT CLASS identifier (? (BLOCK (ALT EXTENDS identifier))) classBlock))) (RULE classBlock (BLOCK (ALT BEGIN (? (BLOCK (ALT PRIVATE (? (BLOCK (ALT fieldList)))))) (? (BLOCK (ALT PUBLIC (+ (BLOCK (ALT fieldList) (ALT methodList)))))) (? (BLOCK (ALT PROTECTED (* (BLOCK (ALT fieldList) (ALT methodList)))))) END))) (RULE variableDeclaration (BLOCK (ALT (= id identifier) COLON typeIdentifier))) (RULE fieldList (BLOCK (ALT (+ (BLOCK (ALT variableDeclaration SEMI)))))) (RULE methodList (BLOCK (ALT (+ (BLOCK (ALT methodDeclaration SEMI)))))) (RULE methodDeclaration (BLOCK (ALT (? (BLOCK (ALT VIRTUAL) (ALT OVERRIDE))) (BLOCK (ALT procedureAndFunctionDeclaration) (ALT constructorDeclaration) (ALT destructorDeclaration))))) (RULE constructorDeclaration (BLOCK (ALT CONSTRUCTOR identifier LPAREN (? (BLOCK (ALT formalParameterList))) RPAREN SEMI (? (BLOCK (ALT INHERITED identifier LPAREN (? (BLOCK (ALT actualParameterList))) RPAREN SEMI))) block))) (RULE destructorDeclaration (BLOCK (ALT DESTRUCTOR identifier SEMI (? (BLOCK (ALT INHERITED DESTROY SEMI))) block))) (RULE objectInstantiation (BLOCK (ALT identifier ASSIGN NEW identifier LPAREN (? (BLOCK (ALT actualParameterList))) RPAREN))) (RULE methodCall (BLOCK (ALT identifier DOT identifier LPAREN (? (BLOCK (ALT actualParameterList))) RPAREN))) (RULE fieldAccess (BLOCK (ALT identifier DOT identifier))) (RULE readStatement (BLOCK (ALT READLN LPAREN identifier (* (BLOCK (ALT COMMA identifier))) RPAREN))) (RULE writeStatement (BLOCK (ALT WRITELN LPAREN (BLOCK (ALT STRING_LITERAL) (ALT expression)) (* (BLOCK (ALT COMMA (BLOCK (ALT STRING_LITERAL) (ALT expression))))) RPAREN))) (RULE CLASS (BLOCK (ALT 'CLASS'))) (RULE EXTENDS (BLOCK (ALT 'EXTENDS'))) (RULE VIRTUAL (BLOCK (ALT 'VIRTUAL'))) (RULE OVERRIDE (BLOCK (ALT 'OVERRIDE'))) (RULE CONSTRUCTOR (BLOCK (ALT 'CONSTRUCTOR'))) (RULE DESTRUCTOR (BLOCK (ALT 'DESTRUCTOR'))) (RULE INHERITED (BLOCK (ALT 'INHERITED'))) (RULE DESTROY (BLOCK (ALT 'DESTROY'))) (RULE NEW (BLOCK (ALT 'NEW'))) (RULE READLN (BLOCK (ALT 'READLN'))) (RULE WRITELN (BLOCK (ALT 'WRITELN'))) (RULE PUBLIC (BLOCK (ALT 'PUBLIC'))) (RULE PRIVATE (BLOCK (ALT 'PRIVATE'))) (RULE PROTECTED (BLOCK (ALT 'PROTECTED'))) (RULE identifier (BLOCK (ALT IDENTIFIER))) (RULE IDENTIFIER (BLOCK (ALT [a-zA-Z_] (* (BLOCK (ALT [a-zA-Z0-9_])))))) (RULE typeIdentifier (BLOCK (ALT IDENTIFIER))) (RULE STRING_LITERAL (BLOCK (ALT '"' (* (BLOCK (ALT .))) '"'))) (RULE SEMI (BLOCK (ALT ';'))) (RULE COLON (BLOCK (ALT ':'))) (RULE LPAREN (BLOCK (ALT '('))) (RULE RPAREN (BLOCK (ALT ')'))) (RULE ASSIGN (BLOCK (ALT ':='))) (RULE DOT (BLOCK (ALT '.'))) (RULE WS (BLOCK (LEXER_ALT_ACTION (ALT (+ (BLOCK (ALT [ \t\r\n])))) skip)))))
+2025-02-16 16:47:08:154 grammar LogManager.java:25 imported actions: []
+2025-02-16 16:47:08:155 grammar LogManager.java:25 imported rule: (RULE program (BLOCK (ALT programHeading (? (BLOCK (ALT INTERFACE))) block DOT EOF)))
+2025-02-16 16:47:08:155 grammar LogManager.java:25 imported rule: (RULE programHeading (BLOCK (ALT PROGRAM identifier (? (BLOCK (ALT LPAREN identifierList RPAREN))) SEMI) (ALT UNIT identifier SEMI)))
+2025-02-16 16:47:08:155 grammar LogManager.java:25 imported rule: (RULE identifier (BLOCK (ALT IDENT)))
+2025-02-16 16:47:08:155 grammar LogManager.java:25 imported rule: (RULE block (BLOCK (ALT (* (BLOCK (ALT labelDeclarationPart) (ALT constantDefinitionPart) (ALT typeDefinitionPart) (ALT variableDeclarationPart) (ALT procedureAndFunctionDeclarationPart) (ALT usesUnitsPart) (ALT IMPLEMENTATION))) compoundStatement)))
+2025-02-16 16:47:08:155 grammar LogManager.java:25 imported rule: (RULE usesUnitsPart (BLOCK (ALT USES identifierList SEMI)))
+2025-02-16 16:47:08:155 grammar LogManager.java:25 imported rule: (RULE labelDeclarationPart (BLOCK (ALT LABEL label (* (BLOCK (ALT COMMA label))) SEMI)))
+2025-02-16 16:47:08:155 grammar LogManager.java:25 imported rule: (RULE label (BLOCK (ALT unsignedInteger)))
+2025-02-16 16:47:08:155 grammar LogManager.java:25 imported rule: (RULE constantDefinitionPart (BLOCK (ALT CONST (+ (BLOCK (ALT constantDefinition SEMI))))))
+2025-02-16 16:47:08:155 grammar LogManager.java:25 imported rule: (RULE constantDefinition (BLOCK (ALT identifier EQUAL constant)))
+2025-02-16 16:47:08:155 grammar LogManager.java:25 imported rule: (RULE constantChr (BLOCK (ALT CHR LPAREN unsignedInteger RPAREN)))
+2025-02-16 16:47:08:155 grammar LogManager.java:25 imported rule: (RULE constant (BLOCK (ALT unsignedNumber) (ALT sign unsignedNumber) (ALT identifier) (ALT sign identifier) (ALT string) (ALT constantChr)))
+2025-02-16 16:47:08:155 grammar LogManager.java:25 imported rule: (RULE unsignedNumber (BLOCK (ALT unsignedInteger) (ALT unsignedReal)))
+2025-02-16 16:47:08:155 grammar LogManager.java:25 imported rule: (RULE unsignedInteger (BLOCK (ALT NUM_INT)))
+2025-02-16 16:47:08:155 grammar LogManager.java:25 imported rule: (RULE unsignedReal (BLOCK (ALT NUM_REAL)))
+2025-02-16 16:47:08:155 grammar LogManager.java:25 imported rule: (RULE sign (BLOCK (ALT PLUS) (ALT MINUS)))
+2025-02-16 16:47:08:155 grammar LogManager.java:25 imported rule: (RULE bool_ (BLOCK (ALT TRUE) (ALT FALSE)))
+2025-02-16 16:47:08:155 grammar LogManager.java:25 imported rule: (RULE string (BLOCK (ALT STRING_LITERAL)))
+2025-02-16 16:47:08:155 grammar LogManager.java:25 imported rule: (RULE typeDefinitionPart (BLOCK (ALT TYPE (+ (BLOCK (ALT typeDefinition SEMI))))))
+2025-02-16 16:47:08:155 grammar LogManager.java:25 imported rule: (RULE typeDefinition (BLOCK (ALT identifier EQUAL (BLOCK (ALT type_) (ALT functionType) (ALT procedureType)))))
+2025-02-16 16:47:08:155 grammar LogManager.java:25 imported rule: (RULE functionType (BLOCK (ALT FUNCTION (? (BLOCK (ALT formalParameterList))) COLON resultType)))
+2025-02-16 16:47:08:155 grammar LogManager.java:25 imported rule: (RULE procedureType (BLOCK (ALT PROCEDURE (? (BLOCK (ALT formalParameterList))))))
+2025-02-16 16:47:08:155 grammar LogManager.java:25 imported rule: (RULE type_ (BLOCK (ALT simpleType) (ALT structuredType) (ALT pointerType)))
+2025-02-16 16:47:08:155 grammar LogManager.java:25 imported rule: (RULE simpleType (BLOCK (ALT scalarType) (ALT subrangeType) (ALT typeIdentifier) (ALT stringtype)))
+2025-02-16 16:47:08:155 grammar LogManager.java:25 imported rule: (RULE scalarType (BLOCK (ALT LPAREN identifierList RPAREN)))
+2025-02-16 16:47:08:155 grammar LogManager.java:25 imported rule: (RULE subrangeType (BLOCK (ALT constant DOTDOT constant)))
+2025-02-16 16:47:08:155 grammar LogManager.java:25 imported rule: (RULE typeIdentifier (BLOCK (ALT identifier) (ALT (BLOCK (ALT CHAR) (ALT BOOLEAN) (ALT INTEGER) (ALT REAL) (ALT STRING)))))
+2025-02-16 16:47:08:155 grammar LogManager.java:25 imported rule: (RULE structuredType (BLOCK (ALT PACKED unpackedStructuredType) (ALT unpackedStructuredType)))
+2025-02-16 16:47:08:155 grammar LogManager.java:25 imported rule: (RULE unpackedStructuredType (BLOCK (ALT arrayType) (ALT recordType) (ALT setType) (ALT fileType)))
+2025-02-16 16:47:08:155 grammar LogManager.java:25 imported rule: (RULE stringtype (BLOCK (ALT STRING LBRACK (BLOCK (ALT identifier) (ALT unsignedNumber)) RBRACK)))
+2025-02-16 16:47:08:155 grammar LogManager.java:25 imported rule: (RULE arrayType (BLOCK (ALT ARRAY LBRACK typeList RBRACK OF componentType) (ALT ARRAY LBRACK2 typeList RBRACK2 OF componentType)))
+2025-02-16 16:47:08:155 grammar LogManager.java:25 imported rule: (RULE typeList (BLOCK (ALT indexType (* (BLOCK (ALT COMMA indexType))))))
+2025-02-16 16:47:08:155 grammar LogManager.java:25 imported rule: (RULE indexType (BLOCK (ALT simpleType)))
+2025-02-16 16:47:08:155 grammar LogManager.java:25 imported rule: (RULE componentType (BLOCK (ALT type_)))
+2025-02-16 16:47:08:155 grammar LogManager.java:25 imported rule: (RULE recordType (BLOCK (ALT RECORD (? (BLOCK (ALT fieldList))) END)))
+2025-02-16 16:47:08:155 grammar LogManager.java:25 imported rule: (RULE fieldList (BLOCK (ALT fixedPart (? (BLOCK (ALT SEMI variantPart)))) (ALT variantPart)))
+2025-02-16 16:47:08:155 grammar LogManager.java:25 imported rule: (RULE fixedPart (BLOCK (ALT recordSection (* (BLOCK (ALT SEMI recordSection))))))
+2025-02-16 16:47:08:155 grammar LogManager.java:25 imported rule: (RULE recordSection (BLOCK (ALT identifierList COLON type_)))
+2025-02-16 16:47:08:155 grammar LogManager.java:25 imported rule: (RULE variantPart (BLOCK (ALT CASE tag OF variant (* (BLOCK (ALT SEMI variant))))))
+2025-02-16 16:47:08:155 grammar LogManager.java:25 imported rule: (RULE tag (BLOCK (ALT identifier COLON typeIdentifier) (ALT typeIdentifier)))
+2025-02-16 16:47:08:155 grammar LogManager.java:25 imported rule: (RULE variant (BLOCK (ALT constList COLON LPAREN fieldList RPAREN)))
+2025-02-16 16:47:08:155 grammar LogManager.java:25 imported rule: (RULE setType (BLOCK (ALT SET OF baseType)))
+2025-02-16 16:47:08:155 grammar LogManager.java:25 imported rule: (RULE baseType (BLOCK (ALT simpleType)))
+2025-02-16 16:47:08:155 grammar LogManager.java:25 imported rule: (RULE fileType (BLOCK (ALT FILE OF type_) (ALT FILE)))
+2025-02-16 16:47:08:155 grammar LogManager.java:25 imported rule: (RULE pointerType (BLOCK (ALT POINTER typeIdentifier)))
+2025-02-16 16:47:08:155 grammar LogManager.java:25 imported rule: (RULE variableDeclarationPart (BLOCK (ALT VAR variableDeclaration (* (BLOCK (ALT SEMI variableDeclaration))) SEMI)))
+2025-02-16 16:47:08:155 grammar LogManager.java:25 imported rule: (RULE variableDeclaration (BLOCK (ALT identifier ':' typeIdentifier)))
+2025-02-16 16:47:08:155 grammar LogManager.java:25 imported rule: (RULE procedureAndFunctionDeclarationPart (BLOCK (ALT procedureOrFunctionDeclaration SEMI)))
+2025-02-16 16:47:08:155 grammar LogManager.java:25 imported rule: (RULE procedureOrFunctionDeclaration (BLOCK (ALT procedureDeclaration) (ALT functionDeclaration)))
+2025-02-16 16:47:08:155 grammar LogManager.java:25 imported rule: (RULE procedureDeclaration (BLOCK (ALT PROCEDURE identifier (? (BLOCK (ALT formalParameterList))) SEMI block)))
+2025-02-16 16:47:08:155 grammar LogManager.java:25 imported rule: (RULE formalParameterList (BLOCK (ALT LPAREN formalParameterSection (* (BLOCK (ALT SEMI formalParameterSection))) RPAREN)))
+2025-02-16 16:47:08:155 grammar LogManager.java:25 imported rule: (RULE formalParameterSection (BLOCK (ALT parameterGroup) (ALT VAR parameterGroup) (ALT FUNCTION parameterGroup) (ALT PROCEDURE parameterGroup)))
+2025-02-16 16:47:08:155 grammar LogManager.java:25 imported rule: (RULE parameterGroup (BLOCK (ALT identifierList COLON typeIdentifier)))
+2025-02-16 16:47:08:155 grammar LogManager.java:25 imported rule: (RULE identifierList (BLOCK (ALT identifier (* (BLOCK (ALT COMMA identifier))))))
+2025-02-16 16:47:08:155 grammar LogManager.java:25 imported rule: (RULE constList (BLOCK (ALT constant (* (BLOCK (ALT COMMA constant))))))
+2025-02-16 16:47:08:155 grammar LogManager.java:25 imported rule: (RULE functionDeclaration (BLOCK (ALT FUNCTION identifier (? (BLOCK (ALT formalParameterList))) COLON resultType SEMI block)))
+2025-02-16 16:47:08:155 grammar LogManager.java:25 imported rule: (RULE resultType (BLOCK (ALT typeIdentifier)))
+2025-02-16 16:47:08:155 grammar LogManager.java:25 imported rule: (RULE statement (BLOCK (ALT label COLON unlabelledStatement) (ALT unlabelledStatement)))
+2025-02-16 16:47:08:155 grammar LogManager.java:25 imported rule: (RULE unlabelledStatement (BLOCK (ALT simpleStatement) (ALT structuredStatement)))
+2025-02-16 16:47:08:155 grammar LogManager.java:25 imported rule: (RULE simpleStatement (BLOCK (ALT assignmentStatement) (ALT procedureStatement) (ALT gotoStatement) (ALT emptyStatement_)))
+2025-02-16 16:47:08:155 grammar LogManager.java:25 imported rule: (RULE assignmentStatement (BLOCK (ALT variable ASSIGN expression)))
+2025-02-16 16:47:08:155 grammar LogManager.java:25 imported rule: (RULE variable (BLOCK (ALT (BLOCK (ALT AT identifier) (ALT identifier)) (* (BLOCK (ALT LBRACK expression (* (BLOCK (ALT COMMA expression))) RBRACK) (ALT LBRACK2 expression (* (BLOCK (ALT COMMA expression))) RBRACK2) (ALT DOT identifier) (ALT POINTER))))))
+2025-02-16 16:47:08:155 grammar LogManager.java:25 imported rule: (RULE expression (BLOCK (ALT simpleExpression (? (BLOCK (ALT relationaloperator expression))))))
+2025-02-16 16:47:08:155 grammar LogManager.java:25 imported rule: (RULE relationaloperator (BLOCK (ALT EQUAL) (ALT NOT_EQUAL) (ALT LT) (ALT LE) (ALT GE) (ALT GT) (ALT IN)))
+2025-02-16 16:47:08:155 grammar LogManager.java:25 imported rule: (RULE simpleExpression (BLOCK (ALT term (? (BLOCK (ALT additiveoperator simpleExpression))))))
+2025-02-16 16:47:08:155 grammar LogManager.java:25 imported rule: (RULE additiveoperator (BLOCK (ALT PLUS) (ALT MINUS) (ALT OR)))
+2025-02-16 16:47:08:155 grammar LogManager.java:25 imported rule: (RULE term (BLOCK (ALT signedFactor (? (BLOCK (ALT multiplicativeoperator term))))))
+2025-02-16 16:47:08:155 grammar LogManager.java:25 imported rule: (RULE multiplicativeoperator (BLOCK (ALT STAR) (ALT SLASH) (ALT DIV) (ALT MOD) (ALT AND)))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE signedFactor (BLOCK (ALT (? (BLOCK (ALT PLUS) (ALT MINUS))) factor)))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE factor (BLOCK (ALT variable) (ALT LPAREN expression RPAREN) (ALT functionDesignator) (ALT unsignedConstant) (ALT set_) (ALT NOT factor) (ALT bool_)))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE unsignedConstant (BLOCK (ALT unsignedNumber) (ALT constantChr) (ALT string) (ALT NIL)))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE functionDesignator (BLOCK (ALT identifier LPAREN parameterList RPAREN)))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE parameterList (BLOCK (ALT actualParameter (* (BLOCK (ALT COMMA actualParameter))))))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE set_ (BLOCK (ALT LBRACK elementList RBRACK) (ALT LBRACK2 elementList RBRACK2)))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE elementList (BLOCK (ALT element (* (BLOCK (ALT COMMA element)))) (ALT EPSILON)))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE element (BLOCK (ALT expression (? (BLOCK (ALT DOTDOT expression))))))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE procedureStatement (BLOCK (ALT identifier (? (BLOCK (ALT LPAREN parameterList RPAREN))))))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE actualParameter (BLOCK (ALT expression (* (BLOCK (ALT parameterwidth))))))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE parameterwidth (BLOCK (ALT COLON expression)))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE gotoStatement (BLOCK (ALT GOTO label)))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE emptyStatement_ (BLOCK (ALT EPSILON)))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE empty_ (BLOCK (ALT EPSILON)))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE structuredStatement (BLOCK (ALT compoundStatement) (ALT conditionalStatement) (ALT repetetiveStatement) (ALT withStatement)))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE compoundStatement (BLOCK (ALT BEGIN statements END)))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE statements (BLOCK (ALT statement (* (BLOCK (ALT SEMI statement))))))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE conditionalStatement (BLOCK (ALT ifStatement) (ALT caseStatement)))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE ifStatement (BLOCK (ALT IF expression THEN statement (? (BLOCK (ALT ELSE statement))))))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE caseStatement (BLOCK (ALT CASE expression OF caseListElement (* (BLOCK (ALT SEMI caseListElement))) (? (BLOCK (ALT SEMI ELSE statements))) END)))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE caseListElement (BLOCK (ALT constList COLON statement)))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE repetetiveStatement (BLOCK (ALT whileStatement) (ALT repeatStatement) (ALT forStatement)))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE whileStatement (BLOCK (ALT WHILE expression DO statement)))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE repeatStatement (BLOCK (ALT REPEAT statements UNTIL expression)))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE forStatement (BLOCK (ALT FOR identifier ASSIGN forList DO statement)))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE forList (BLOCK (ALT initialValue (BLOCK (ALT TO) (ALT DOWNTO)) finalValue)))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE initialValue (BLOCK (ALT expression)))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE finalValue (BLOCK (ALT expression)))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE withStatement (BLOCK (ALT WITH recordVariableList DO statement)))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE recordVariableList (BLOCK (ALT variable (* (BLOCK (ALT COMMA variable))))))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE AND (BLOCK (ALT 'AND')))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE ARRAY (BLOCK (ALT 'ARRAY')))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE BEGIN (BLOCK (ALT 'BEGIN')))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE BOOLEAN (BLOCK (ALT 'BOOLEAN')))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE CASE (BLOCK (ALT 'CASE')))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE CHAR (BLOCK (ALT 'CHAR')))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE CHR (BLOCK (ALT 'CHR')))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE CONST (BLOCK (ALT 'CONST')))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE DIV (BLOCK (ALT 'DIV')))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE DO (BLOCK (ALT 'DO')))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE DOWNTO (BLOCK (ALT 'DOWNTO')))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE ELSE (BLOCK (ALT 'ELSE')))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE END (BLOCK (ALT 'END')))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE FILE (BLOCK (ALT 'FILE')))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE FOR (BLOCK (ALT 'FOR')))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE FUNCTION (BLOCK (ALT 'FUNCTION')))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE GOTO (BLOCK (ALT 'GOTO')))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE IF (BLOCK (ALT 'IF')))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE IN (BLOCK (ALT 'IN')))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE INTEGER (BLOCK (ALT 'INTEGER')))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE LABEL (BLOCK (ALT 'LABEL')))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE MOD (BLOCK (ALT 'MOD')))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE NIL (BLOCK (ALT 'NIL')))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE NOT (BLOCK (ALT 'NOT')))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE OF (BLOCK (ALT 'OF')))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE OR (BLOCK (ALT 'OR')))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE PACKED (BLOCK (ALT 'PACKED')))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE PROCEDURE (BLOCK (ALT 'PROCEDURE')))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE PROGRAM (BLOCK (ALT 'PROGRAM')))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE REAL (BLOCK (ALT 'REAL')))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE RECORD (BLOCK (ALT 'RECORD')))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE REPEAT (BLOCK (ALT 'REPEAT')))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE SET (BLOCK (ALT 'SET')))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE THEN (BLOCK (ALT 'THEN')))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE TO (BLOCK (ALT 'TO')))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE TYPE (BLOCK (ALT 'TYPE')))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE UNTIL (BLOCK (ALT 'UNTIL')))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE VAR (BLOCK (ALT 'VAR')))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE WHILE (BLOCK (ALT 'WHILE')))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE WITH (BLOCK (ALT 'WITH')))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE PLUS (BLOCK (ALT '+')))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE MINUS (BLOCK (ALT '-')))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE STAR (BLOCK (ALT '*')))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE SLASH (BLOCK (ALT '/')))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE ASSIGN (BLOCK (ALT ':=')))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE COMMA (BLOCK (ALT ',')))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE SEMI (BLOCK (ALT ';')))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE COLON (BLOCK (ALT ':')))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE EQUAL (BLOCK (ALT '=')))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE NOT_EQUAL (BLOCK (ALT '<>')))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE LT (BLOCK (ALT '<')))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE LE (BLOCK (ALT '<=')))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE GE (BLOCK (ALT '>=')))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE GT (BLOCK (ALT '>')))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE LPAREN (BLOCK (ALT '(')))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE RPAREN (BLOCK (ALT ')')))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE LBRACK (BLOCK (ALT '[')))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE LBRACK2 (BLOCK (ALT '(.')))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE RBRACK (BLOCK (ALT ']')))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE RBRACK2 (BLOCK (ALT '.)')))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE POINTER (BLOCK (ALT '^')))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE AT (BLOCK (ALT '@')))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE DOT (BLOCK (ALT '.')))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE DOTDOT (BLOCK (ALT '..')))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE LCURLY (BLOCK (ALT '{')))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE RCURLY (BLOCK (ALT '}')))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE UNIT (BLOCK (ALT 'UNIT')))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE INTERFACE (BLOCK (ALT 'INTERFACE')))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE USES (BLOCK (ALT 'USES')))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE STRING (BLOCK (ALT 'STRING')))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE IMPLEMENTATION (BLOCK (ALT 'IMPLEMENTATION')))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE TRUE (BLOCK (ALT 'TRUE')))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE FALSE (BLOCK (ALT 'FALSE')))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE WS (BLOCK (LEXER_ALT_ACTION (ALT [ \t\r\n]) skip)))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE COMMENT_1 (BLOCK (LEXER_ALT_ACTION (ALT '(*' (* (BLOCK (ALT .))) '*)') skip)))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE COMMENT_2 (BLOCK (LEXER_ALT_ACTION (ALT '{' (* (BLOCK (ALT .))) '}') skip)))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE IDENT (BLOCK (ALT (BLOCK (ALT (.. 'A' 'Z'))) (* (BLOCK (ALT (.. 'A' 'Z')) (ALT (.. '0' '9')) (ALT '_'))))))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE STRING_LITERAL (BLOCK (ALT '\'' (* (BLOCK (ALT '\'\'') (ALT (~ (SET '\''))))) '\'')))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE NUM_INT (BLOCK (ALT (+ (BLOCK (ALT (.. '0' '9')))))))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE NUM_REAL (BLOCK (ALT (+ (BLOCK (ALT (.. '0' '9')))) (BLOCK (ALT (? (BLOCK (ALT '.' (+ (BLOCK (ALT (.. '0' '9')))) (? (BLOCK (ALT EXPONENT))))))) (ALT EXPONENT)))))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE EXPONENT (RULEMODIFIERS fragment) (BLOCK (ALT (BLOCK (ALT 'E')) (? (BLOCK (ALT '+') (ALT '-'))) (+ (BLOCK (ALT (.. '0' '9')))))))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE statementSequence (BLOCK (ALT statement (* (BLOCK (ALT ';' statement))))))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE actualParameterList (BLOCK (ALT expression (* (BLOCK (ALT ',' expression))))))
+2025-02-16 16:47:08:156 grammar LogManager.java:25 imported rule: (RULE procedureAndFunctionDeclaration (BLOCK (ALT 'procedure' identifier (? (BLOCK (ALT formalParameterList))) ';' block) (ALT 'function' identifier (? (BLOCK (ALT formalParameterList))) ':' typeIdentifier ';' block)))
+2025-02-16 16:47:08:157 grammar LogManager.java:25 Grammar: (COMBINED_GRAMMAR delphi (OPTIONS (= language Java)) (import pascal) (RULES (RULE program (BLOCK (ALT (+ (BLOCK (ALT classDeclaration))) EOF))) (RULE classDeclaration (BLOCK (ALT CLASS identifier (? (BLOCK (ALT EXTENDS identifier))) classBlock))) (RULE classBlock (BLOCK (ALT BEGIN (? (BLOCK (ALT PRIVATE (? (BLOCK (ALT fieldList)))))) (? (BLOCK (ALT PUBLIC (+ (BLOCK (ALT fieldList) (ALT methodList)))))) (? (BLOCK (ALT PROTECTED (* (BLOCK (ALT fieldList) (ALT methodList)))))) END))) (RULE variableDeclaration (BLOCK (ALT (= id identifier) COLON typeIdentifier))) (RULE fieldList (BLOCK (ALT (+ (BLOCK (ALT variableDeclaration SEMI)))))) (RULE methodList (BLOCK (ALT (+ (BLOCK (ALT methodDeclaration SEMI)))))) (RULE methodDeclaration (BLOCK (ALT (? (BLOCK (ALT VIRTUAL) (ALT OVERRIDE))) (BLOCK (ALT procedureAndFunctionDeclaration) (ALT constructorDeclaration) (ALT destructorDeclaration))))) (RULE constructorDeclaration (BLOCK (ALT CONSTRUCTOR identifier LPAREN (? (BLOCK (ALT formalParameterList))) RPAREN SEMI (? (BLOCK (ALT INHERITED identifier LPAREN (? (BLOCK (ALT actualParameterList))) RPAREN SEMI))) block))) (RULE destructorDeclaration (BLOCK (ALT DESTRUCTOR identifier SEMI (? (BLOCK (ALT INHERITED DESTROY SEMI))) block))) (RULE objectInstantiation (BLOCK (ALT identifier ASSIGN NEW identifier LPAREN (? (BLOCK (ALT actualParameterList))) RPAREN))) (RULE methodCall (BLOCK (ALT identifier DOT identifier LPAREN (? (BLOCK (ALT actualParameterList))) RPAREN))) (RULE fieldAccess (BLOCK (ALT identifier DOT identifier))) (RULE readStatement (BLOCK (ALT READLN LPAREN identifier (* (BLOCK (ALT COMMA identifier))) RPAREN))) (RULE writeStatement (BLOCK (ALT WRITELN LPAREN (BLOCK (ALT STRING_LITERAL) (ALT expression)) (* (BLOCK (ALT COMMA (BLOCK (ALT STRING_LITERAL) (ALT expression))))) RPAREN))) (RULE CLASS (BLOCK (ALT 'CLASS'))) (RULE EXTENDS (BLOCK (ALT 'EXTENDS'))) (RULE VIRTUAL (BLOCK (ALT 'VIRTUAL'))) (RULE OVERRIDE (BLOCK (ALT 'OVERRIDE'))) (RULE CONSTRUCTOR (BLOCK (ALT 'CONSTRUCTOR'))) (RULE DESTRUCTOR (BLOCK (ALT 'DESTRUCTOR'))) (RULE INHERITED (BLOCK (ALT 'INHERITED'))) (RULE DESTROY (BLOCK (ALT 'DESTROY'))) (RULE NEW (BLOCK (ALT 'NEW'))) (RULE READLN (BLOCK (ALT 'READLN'))) (RULE WRITELN (BLOCK (ALT 'WRITELN'))) (RULE PUBLIC (BLOCK (ALT 'PUBLIC'))) (RULE PRIVATE (BLOCK (ALT 'PRIVATE'))) (RULE PROTECTED (BLOCK (ALT 'PROTECTED'))) (RULE identifier (BLOCK (ALT IDENTIFIER))) (RULE IDENTIFIER (BLOCK (ALT [a-zA-Z_] (* (BLOCK (ALT [a-zA-Z0-9_])))))) (RULE typeIdentifier (BLOCK (ALT IDENTIFIER))) (RULE STRING_LITERAL (BLOCK (ALT '"' (* (BLOCK (ALT .))) '"'))) (RULE SEMI (BLOCK (ALT ';'))) (RULE COLON (BLOCK (ALT ':'))) (RULE LPAREN (BLOCK (ALT '('))) (RULE RPAREN (BLOCK (ALT ')'))) (RULE ASSIGN (BLOCK (ALT ':='))) (RULE DOT (BLOCK (ALT '.'))) (RULE WS (BLOCK (LEXER_ALT_ACTION (ALT (+ (BLOCK (ALT [ \t\r\n])))) skip))) (RULE programHeading (BLOCK (ALT PROGRAM identifier (? (BLOCK (ALT LPAREN identifierList RPAREN))) SEMI) (ALT UNIT identifier SEMI))) (RULE block (BLOCK (ALT (* (BLOCK (ALT labelDeclarationPart) (ALT constantDefinitionPart) (ALT typeDefinitionPart) (ALT variableDeclarationPart) (ALT procedureAndFunctionDeclarationPart) (ALT usesUnitsPart) (ALT IMPLEMENTATION))) compoundStatement))) (RULE usesUnitsPart (BLOCK (ALT USES identifierList SEMI))) (RULE labelDeclarationPart (BLOCK (ALT LABEL label (* (BLOCK (ALT COMMA label))) SEMI))) (RULE label (BLOCK (ALT unsignedInteger))) (RULE constantDefinitionPart (BLOCK (ALT CONST (+ (BLOCK (ALT constantDefinition SEMI)))))) (RULE constantDefinition (BLOCK (ALT identifier EQUAL constant))) (RULE constantChr (BLOCK (ALT CHR LPAREN unsignedInteger RPAREN))) (RULE constant (BLOCK (ALT unsignedNumber) (ALT sign unsignedNumber) (ALT identifier) (ALT sign identifier) (ALT string) (ALT constantChr))) (RULE unsignedNumber (BLOCK (ALT unsignedInteger) (ALT unsignedReal))) (RULE unsignedInteger (BLOCK (ALT NUM_INT))) (RULE unsignedReal (BLOCK (ALT NUM_REAL))) (RULE sign (BLOCK (ALT PLUS) (ALT MINUS))) (RULE bool_ (BLOCK (ALT TRUE) (ALT FALSE))) (RULE string (BLOCK (ALT STRING_LITERAL))) (RULE typeDefinitionPart (BLOCK (ALT TYPE (+ (BLOCK (ALT typeDefinition SEMI)))))) (RULE typeDefinition (BLOCK (ALT identifier EQUAL (BLOCK (ALT type_) (ALT functionType) (ALT procedureType))))) (RULE functionType (BLOCK (ALT FUNCTION (? (BLOCK (ALT formalParameterList))) COLON resultType))) (RULE procedureType (BLOCK (ALT PROCEDURE (? (BLOCK (ALT formalParameterList)))))) (RULE type_ (BLOCK (ALT simpleType) (ALT structuredType) (ALT pointerType))) (RULE simpleType (BLOCK (ALT scalarType) (ALT subrangeType) (ALT typeIdentifier) (ALT stringtype))) (RULE scalarType (BLOCK (ALT LPAREN identifierList RPAREN))) (RULE subrangeType (BLOCK (ALT constant DOTDOT constant))) (RULE structuredType (BLOCK (ALT PACKED unpackedStructuredType) (ALT unpackedStructuredType))) (RULE unpackedStructuredType (BLOCK (ALT arrayType) (ALT recordType) (ALT setType) (ALT fileType))) (RULE stringtype (BLOCK (ALT STRING LBRACK (BLOCK (ALT identifier) (ALT unsignedNumber)) RBRACK))) (RULE arrayType (BLOCK (ALT ARRAY LBRACK typeList RBRACK OF componentType) (ALT ARRAY LBRACK2 typeList RBRACK2 OF componentType))) (RULE typeList (BLOCK (ALT indexType (* (BLOCK (ALT COMMA indexType)))))) (RULE indexType (BLOCK (ALT simpleType))) (RULE componentType (BLOCK (ALT type_))) (RULE recordType (BLOCK (ALT RECORD (? (BLOCK (ALT fieldList))) END))) (RULE fixedPart (BLOCK (ALT recordSection (* (BLOCK (ALT SEMI recordSection)))))) (RULE recordSection (BLOCK (ALT identifierList COLON type_))) (RULE variantPart (BLOCK (ALT CASE tag OF variant (* (BLOCK (ALT SEMI variant)))))) (RULE tag (BLOCK (ALT identifier COLON typeIdentifier) (ALT typeIdentifier))) (RULE variant (BLOCK (ALT constList COLON LPAREN fieldList RPAREN))) (RULE setType (BLOCK (ALT SET OF baseType))) (RULE baseType (BLOCK (ALT simpleType))) (RULE fileType (BLOCK (ALT FILE OF type_) (ALT FILE))) (RULE pointerType (BLOCK (ALT POINTER typeIdentifier))) (RULE variableDeclarationPart (BLOCK (ALT VAR variableDeclaration (* (BLOCK (ALT SEMI variableDeclaration))) SEMI))) (RULE procedureAndFunctionDeclarationPart (BLOCK (ALT procedureOrFunctionDeclaration SEMI))) (RULE procedureOrFunctionDeclaration (BLOCK (ALT procedureDeclaration) (ALT functionDeclaration))) (RULE procedureDeclaration (BLOCK (ALT PROCEDURE identifier (? (BLOCK (ALT formalParameterList))) SEMI block))) (RULE formalParameterList (BLOCK (ALT LPAREN formalParameterSection (* (BLOCK (ALT SEMI formalParameterSection))) RPAREN))) (RULE formalParameterSection (BLOCK (ALT parameterGroup) (ALT VAR parameterGroup) (ALT FUNCTION parameterGroup) (ALT PROCEDURE parameterGroup))) (RULE parameterGroup (BLOCK (ALT identifierList COLON typeIdentifier))) (RULE identifierList (BLOCK (ALT identifier (* (BLOCK (ALT COMMA identifier)))))) (RULE constList (BLOCK (ALT constant (* (BLOCK (ALT COMMA constant)))))) (RULE functionDeclaration (BLOCK (ALT FUNCTION identifier (? (BLOCK (ALT formalParameterList))) COLON resultType SEMI block))) (RULE resultType (BLOCK (ALT typeIdentifier))) (RULE statement (BLOCK (ALT label COLON unlabelledStatement) (ALT unlabelledStatement))) (RULE unlabelledStatement (BLOCK (ALT simpleStatement) (ALT structuredStatement))) (RULE simpleStatement (BLOCK (ALT assignmentStatement) (ALT procedureStatement) (ALT gotoStatement) (ALT emptyStatement_))) (RULE assignmentStatement (BLOCK (ALT variable ASSIGN expression))) (RULE variable (BLOCK (ALT (BLOCK (ALT AT identifier) (ALT identifier)) (* (BLOCK (ALT LBRACK expression (* (BLOCK (ALT COMMA expression))) RBRACK) (ALT LBRACK2 expression (* (BLOCK (ALT COMMA expression))) RBRACK2) (ALT DOT identifier) (ALT POINTER)))))) (RULE expression (BLOCK (ALT simpleExpression (? (BLOCK (ALT relationaloperator expression)))))) (RULE relationaloperator (BLOCK (ALT EQUAL) (ALT NOT_EQUAL) (ALT LT) (ALT LE) (ALT GE) (ALT GT) (ALT IN))) (RULE simpleExpression (BLOCK (ALT term (? (BLOCK (ALT additiveoperator simpleExpression)))))) (RULE additiveoperator (BLOCK (ALT PLUS) (ALT MINUS) (ALT OR))) (RULE term (BLOCK (ALT signedFactor (? (BLOCK (ALT multiplicativeoperator term)))))) (RULE multiplicativeoperator (BLOCK (ALT STAR) (ALT SLASH) (ALT DIV) (ALT MOD) (ALT AND))) (RULE signedFactor (BLOCK (ALT (? (BLOCK (ALT PLUS) (ALT MINUS))) factor))) (RULE factor (BLOCK (ALT variable) (ALT LPAREN expression RPAREN) (ALT functionDesignator) (ALT unsignedConstant) (ALT set_) (ALT NOT factor) (ALT bool_))) (RULE unsignedConstant (BLOCK (ALT unsignedNumber) (ALT constantChr) (ALT string) (ALT NIL))) (RULE functionDesignator (BLOCK (ALT identifier LPAREN parameterList RPAREN))) (RULE parameterList (BLOCK (ALT actualParameter (* (BLOCK (ALT COMMA actualParameter)))))) (RULE set_ (BLOCK (ALT LBRACK elementList RBRACK) (ALT LBRACK2 elementList RBRACK2))) (RULE elementList (BLOCK (ALT element (* (BLOCK (ALT COMMA element)))) (ALT EPSILON))) (RULE element (BLOCK (ALT expression (? (BLOCK (ALT DOTDOT expression)))))) (RULE procedureStatement (BLOCK (ALT identifier (? (BLOCK (ALT LPAREN parameterList RPAREN)))))) (RULE actualParameter (BLOCK (ALT expression (* (BLOCK (ALT parameterwidth)))))) (RULE parameterwidth (BLOCK (ALT COLON expression))) (RULE gotoStatement (BLOCK (ALT GOTO label))) (RULE emptyStatement_ (BLOCK (ALT EPSILON))) (RULE empty_ (BLOCK (ALT EPSILON))) (RULE structuredStatement (BLOCK (ALT compoundStatement) (ALT conditionalStatement) (ALT repetetiveStatement) (ALT withStatement))) (RULE compoundStatement (BLOCK (ALT BEGIN statements END))) (RULE statements (BLOCK (ALT statement (* (BLOCK (ALT SEMI statement)))))) (RULE conditionalStatement (BLOCK (ALT ifStatement) (ALT caseStatement))) (RULE ifStatement (BLOCK (ALT IF expression THEN statement (? (BLOCK (ALT ELSE statement)))))) (RULE caseStatement (BLOCK (ALT CASE expression OF caseListElement (* (BLOCK (ALT SEMI caseListElement))) (? (BLOCK (ALT SEMI ELSE statements))) END))) (RULE caseListElement (BLOCK (ALT constList COLON statement))) (RULE repetetiveStatement (BLOCK (ALT whileStatement) (ALT repeatStatement) (ALT forStatement))) (RULE whileStatement (BLOCK (ALT WHILE expression DO statement))) (RULE repeatStatement (BLOCK (ALT REPEAT statements UNTIL expression))) (RULE forStatement (BLOCK (ALT FOR identifier ASSIGN forList DO statement))) (RULE forList (BLOCK (ALT initialValue (BLOCK (ALT TO) (ALT DOWNTO)) finalValue))) (RULE initialValue (BLOCK (ALT expression))) (RULE finalValue (BLOCK (ALT expression))) (RULE withStatement (BLOCK (ALT WITH recordVariableList DO statement))) (RULE recordVariableList (BLOCK (ALT variable (* (BLOCK (ALT COMMA variable)))))) (RULE AND (BLOCK (ALT 'AND'))) (RULE ARRAY (BLOCK (ALT 'ARRAY'))) (RULE BEGIN (BLOCK (ALT 'BEGIN'))) (RULE BOOLEAN (BLOCK (ALT 'BOOLEAN'))) (RULE CASE (BLOCK (ALT 'CASE'))) (RULE CHAR (BLOCK (ALT 'CHAR'))) (RULE CHR (BLOCK (ALT 'CHR'))) (RULE CONST (BLOCK (ALT 'CONST'))) (RULE DIV (BLOCK (ALT 'DIV'))) (RULE DO (BLOCK (ALT 'DO'))) (RULE DOWNTO (BLOCK (ALT 'DOWNTO'))) (RULE ELSE (BLOCK (ALT 'ELSE'))) (RULE END (BLOCK (ALT 'END'))) (RULE FILE (BLOCK (ALT 'FILE'))) (RULE FOR (BLOCK (ALT 'FOR'))) (RULE FUNCTION (BLOCK (ALT 'FUNCTION'))) (RULE GOTO (BLOCK (ALT 'GOTO'))) (RULE IF (BLOCK (ALT 'IF'))) (RULE IN (BLOCK (ALT 'IN'))) (RULE INTEGER (BLOCK (ALT 'INTEGER'))) (RULE LABEL (BLOCK (ALT 'LABEL'))) (RULE MOD (BLOCK (ALT 'MOD'))) (RULE NIL (BLOCK (ALT 'NIL'))) (RULE NOT (BLOCK (ALT 'NOT'))) (RULE OF (BLOCK (ALT 'OF'))) (RULE OR (BLOCK (ALT 'OR'))) (RULE PACKED (BLOCK (ALT 'PACKED'))) (RULE PROCEDURE (BLOCK (ALT 'PROCEDURE'))) (RULE PROGRAM (BLOCK (ALT 'PROGRAM'))) (RULE REAL (BLOCK (ALT 'REAL'))) (RULE RECORD (BLOCK (ALT 'RECORD'))) (RULE REPEAT (BLOCK (ALT 'REPEAT'))) (RULE SET (BLOCK (ALT 'SET'))) (RULE THEN (BLOCK (ALT 'THEN'))) (RULE TO (BLOCK (ALT 'TO'))) (RULE TYPE (BLOCK (ALT 'TYPE'))) (RULE UNTIL (BLOCK (ALT 'UNTIL'))) (RULE VAR (BLOCK (ALT 'VAR'))) (RULE WHILE (BLOCK (ALT 'WHILE'))) (RULE WITH (BLOCK (ALT 'WITH'))) (RULE PLUS (BLOCK (ALT '+'))) (RULE MINUS (BLOCK (ALT '-'))) (RULE STAR (BLOCK (ALT '*'))) (RULE SLASH (BLOCK (ALT '/'))) (RULE COMMA (BLOCK (ALT ','))) (RULE EQUAL (BLOCK (ALT '='))) (RULE NOT_EQUAL (BLOCK (ALT '<>'))) (RULE LT (BLOCK (ALT '<'))) (RULE LE (BLOCK (ALT '<='))) (RULE GE (BLOCK (ALT '>='))) (RULE GT (BLOCK (ALT '>'))) (RULE LBRACK (BLOCK (ALT '['))) (RULE LBRACK2 (BLOCK (ALT '(.'))) (RULE RBRACK (BLOCK (ALT ']'))) (RULE RBRACK2 (BLOCK (ALT '.)'))) (RULE POINTER (BLOCK (ALT '^'))) (RULE AT (BLOCK (ALT '@'))) (RULE DOTDOT (BLOCK (ALT '..'))) (RULE LCURLY (BLOCK (ALT '{'))) (RULE RCURLY (BLOCK (ALT '}'))) (RULE UNIT (BLOCK (ALT 'UNIT'))) (RULE INTERFACE (BLOCK (ALT 'INTERFACE'))) (RULE USES (BLOCK (ALT 'USES'))) (RULE STRING (BLOCK (ALT 'STRING'))) (RULE IMPLEMENTATION (BLOCK (ALT 'IMPLEMENTATION'))) (RULE TRUE (BLOCK (ALT 'TRUE'))) (RULE FALSE (BLOCK (ALT 'FALSE'))) (RULE COMMENT_1 (BLOCK (LEXER_ALT_ACTION (ALT '(*' (* (BLOCK (ALT .))) '*)') skip))) (RULE COMMENT_2 (BLOCK (LEXER_ALT_ACTION (ALT '{' (* (BLOCK (ALT .))) '}') skip))) (RULE IDENT (BLOCK (ALT (BLOCK (ALT (.. 'A' 'Z'))) (* (BLOCK (ALT (.. 'A' 'Z')) (ALT (.. '0' '9')) (ALT '_')))))) (RULE NUM_INT (BLOCK (ALT (+ (BLOCK (ALT (.. '0' '9'))))))) (RULE NUM_REAL (BLOCK (ALT (+ (BLOCK (ALT (.. '0' '9')))) (BLOCK (ALT (? (BLOCK (ALT '.' (+ (BLOCK (ALT (.. '0' '9')))) (? (BLOCK (ALT EXPONENT))))))) (ALT EXPONENT))))) (RULE EXPONENT (RULEMODIFIERS fragment) (BLOCK (ALT (BLOCK (ALT 'E')) (? (BLOCK (ALT '+') (ALT '-'))) (+ (BLOCK (ALT (.. '0' '9'))))))) (RULE statementSequence (BLOCK (ALT statement (* (BLOCK (ALT ';' statement)))))) (RULE actualParameterList (BLOCK (ALT expression (* (BLOCK (ALT ',' expression)))))) (RULE procedureAndFunctionDeclaration (BLOCK (ALT 'procedure' identifier (? (BLOCK (ALT formalParameterList))) ';' block) (ALT 'function' identifier (? (BLOCK (ALT formalParameterList))) ':' typeIdentifier ';' block)))))
+2025-02-16 16:47:08:174 grammar LogManager.java:25 after: (COMBINED_GRAMMAR delphi (OPTIONS (= language Java)) (import pascal) (RULES (RULE program (BLOCK (ALT (+ (BLOCK (ALT classDeclaration))) EOF))) (RULE classDeclaration (BLOCK (ALT CLASS identifier (? (BLOCK (ALT EXTENDS identifier))) classBlock))) (RULE classBlock (BLOCK (ALT BEGIN (? (BLOCK (ALT PRIVATE (? (BLOCK (ALT fieldList)))))) (? (BLOCK (ALT PUBLIC (+ (BLOCK (ALT fieldList) (ALT methodList)))))) (? (BLOCK (ALT PROTECTED (* (BLOCK (ALT fieldList) (ALT methodList)))))) END))) (RULE variableDeclaration (BLOCK (ALT (= id identifier) COLON typeIdentifier))) (RULE fieldList (BLOCK (ALT (+ (BLOCK (ALT variableDeclaration SEMI)))))) (RULE methodList (BLOCK (ALT (+ (BLOCK (ALT methodDeclaration SEMI)))))) (RULE methodDeclaration (BLOCK (ALT (? (BLOCK (ALT (SET VIRTUAL OVERRIDE)))) (BLOCK (ALT procedureAndFunctionDeclaration) (ALT constructorDeclaration) (ALT destructorDeclaration))))) (RULE constructorDeclaration (BLOCK (ALT CONSTRUCTOR identifier LPAREN (? (BLOCK (ALT formalParameterList))) RPAREN SEMI (? (BLOCK (ALT INHERITED identifier LPAREN (? (BLOCK (ALT actualParameterList))) RPAREN SEMI))) block))) (RULE destructorDeclaration (BLOCK (ALT DESTRUCTOR identifier SEMI (? (BLOCK (ALT INHERITED DESTROY SEMI))) block))) (RULE objectInstantiation (BLOCK (ALT identifier ASSIGN NEW identifier LPAREN (? (BLOCK (ALT actualParameterList))) RPAREN))) (RULE methodCall (BLOCK (ALT identifier DOT identifier LPAREN (? (BLOCK (ALT actualParameterList))) RPAREN))) (RULE fieldAccess (BLOCK (ALT identifier DOT identifier))) (RULE readStatement (BLOCK (ALT READLN LPAREN identifier (* (BLOCK (ALT COMMA identifier))) RPAREN))) (RULE writeStatement (BLOCK (ALT WRITELN LPAREN (BLOCK (ALT STRING_LITERAL) (ALT expression)) (* (BLOCK (ALT COMMA (BLOCK (ALT STRING_LITERAL) (ALT expression))))) RPAREN))) (RULE CLASS (BLOCK (ALT 'CLASS'))) (RULE EXTENDS (BLOCK (ALT 'EXTENDS'))) (RULE VIRTUAL (BLOCK (ALT 'VIRTUAL'))) (RULE OVERRIDE (BLOCK (ALT 'OVERRIDE'))) (RULE CONSTRUCTOR (BLOCK (ALT 'CONSTRUCTOR'))) (RULE DESTRUCTOR (BLOCK (ALT 'DESTRUCTOR'))) (RULE INHERITED (BLOCK (ALT 'INHERITED'))) (RULE DESTROY (BLOCK (ALT 'DESTROY'))) (RULE NEW (BLOCK (ALT 'NEW'))) (RULE READLN (BLOCK (ALT 'READLN'))) (RULE WRITELN (BLOCK (ALT 'WRITELN'))) (RULE PUBLIC (BLOCK (ALT 'PUBLIC'))) (RULE PRIVATE (BLOCK (ALT 'PRIVATE'))) (RULE PROTECTED (BLOCK (ALT 'PROTECTED'))) (RULE identifier (BLOCK (ALT IDENTIFIER))) (RULE IDENTIFIER (BLOCK (ALT [a-zA-Z_] (* (BLOCK (ALT [a-zA-Z0-9_])))))) (RULE typeIdentifier (BLOCK (ALT IDENTIFIER))) (RULE STRING_LITERAL (BLOCK (ALT '"' (* (BLOCK (ALT .))) '"'))) (RULE SEMI (BLOCK (ALT ';'))) (RULE COLON (BLOCK (ALT ':'))) (RULE LPAREN (BLOCK (ALT '('))) (RULE RPAREN (BLOCK (ALT ')'))) (RULE ASSIGN (BLOCK (ALT ':='))) (RULE DOT (BLOCK (ALT '.'))) (RULE WS (BLOCK (LEXER_ALT_ACTION (ALT (+ (BLOCK (ALT [ \t\r\n])))) skip))) (RULE programHeading (BLOCK (ALT PROGRAM identifier (? (BLOCK (ALT LPAREN identifierList RPAREN))) SEMI) (ALT UNIT identifier SEMI))) (RULE block (BLOCK (ALT (* (BLOCK (ALT labelDeclarationPart) (ALT constantDefinitionPart) (ALT typeDefinitionPart) (ALT variableDeclarationPart) (ALT procedureAndFunctionDeclarationPart) (ALT usesUnitsPart) (ALT IMPLEMENTATION))) compoundStatement))) (RULE usesUnitsPart (BLOCK (ALT USES identifierList SEMI))) (RULE labelDeclarationPart (BLOCK (ALT LABEL label (* (BLOCK (ALT COMMA label))) SEMI))) (RULE label (BLOCK (ALT unsignedInteger))) (RULE constantDefinitionPart (BLOCK (ALT CONST (+ (BLOCK (ALT constantDefinition SEMI)))))) (RULE constantDefinition (BLOCK (ALT identifier EQUAL constant))) (RULE constantChr (BLOCK (ALT CHR LPAREN unsignedInteger RPAREN))) (RULE constant (BLOCK (ALT unsignedNumber) (ALT sign unsignedNumber) (ALT identifier) (ALT sign identifier) (ALT string) (ALT constantChr))) (RULE unsignedNumber (BLOCK (ALT unsignedInteger) (ALT unsignedReal))) (RULE unsignedInteger (BLOCK (ALT NUM_INT))) (RULE unsignedReal (BLOCK (ALT NUM_REAL))) (RULE sign (BLOCK (ALT (SET PLUS MINUS)))) (RULE bool_ (BLOCK (ALT (SET TRUE FALSE)))) (RULE string (BLOCK (ALT STRING_LITERAL))) (RULE typeDefinitionPart (BLOCK (ALT TYPE (+ (BLOCK (ALT typeDefinition SEMI)))))) (RULE typeDefinition (BLOCK (ALT identifier EQUAL (BLOCK (ALT type_) (ALT functionType) (ALT procedureType))))) (RULE functionType (BLOCK (ALT FUNCTION (? (BLOCK (ALT formalParameterList))) COLON resultType))) (RULE procedureType (BLOCK (ALT PROCEDURE (? (BLOCK (ALT formalParameterList)))))) (RULE type_ (BLOCK (ALT simpleType) (ALT structuredType) (ALT pointerType))) (RULE simpleType (BLOCK (ALT scalarType) (ALT subrangeType) (ALT typeIdentifier) (ALT stringtype))) (RULE scalarType (BLOCK (ALT LPAREN identifierList RPAREN))) (RULE subrangeType (BLOCK (ALT constant DOTDOT constant))) (RULE structuredType (BLOCK (ALT PACKED unpackedStructuredType) (ALT unpackedStructuredType))) (RULE unpackedStructuredType (BLOCK (ALT arrayType) (ALT recordType) (ALT setType) (ALT fileType))) (RULE stringtype (BLOCK (ALT STRING LBRACK (BLOCK (ALT identifier) (ALT unsignedNumber)) RBRACK))) (RULE arrayType (BLOCK (ALT ARRAY LBRACK typeList RBRACK OF componentType) (ALT ARRAY LBRACK2 typeList RBRACK2 OF componentType))) (RULE typeList (BLOCK (ALT indexType (* (BLOCK (ALT COMMA indexType)))))) (RULE indexType (BLOCK (ALT simpleType))) (RULE componentType (BLOCK (ALT type_))) (RULE recordType (BLOCK (ALT RECORD (? (BLOCK (ALT fieldList))) END))) (RULE fixedPart (BLOCK (ALT recordSection (* (BLOCK (ALT SEMI recordSection)))))) (RULE recordSection (BLOCK (ALT identifierList COLON type_))) (RULE variantPart (BLOCK (ALT CASE tag OF variant (* (BLOCK (ALT SEMI variant)))))) (RULE tag (BLOCK (ALT identifier COLON typeIdentifier) (ALT typeIdentifier))) (RULE variant (BLOCK (ALT constList COLON LPAREN fieldList RPAREN))) (RULE setType (BLOCK (ALT SET OF baseType))) (RULE baseType (BLOCK (ALT simpleType))) (RULE fileType (BLOCK (ALT FILE OF type_) (ALT FILE))) (RULE pointerType (BLOCK (ALT POINTER typeIdentifier))) (RULE variableDeclarationPart (BLOCK (ALT VAR variableDeclaration (* (BLOCK (ALT SEMI variableDeclaration))) SEMI))) (RULE procedureAndFunctionDeclarationPart (BLOCK (ALT procedureOrFunctionDeclaration SEMI))) (RULE procedureOrFunctionDeclaration (BLOCK (ALT procedureDeclaration) (ALT functionDeclaration))) (RULE procedureDeclaration (BLOCK (ALT PROCEDURE identifier (? (BLOCK (ALT formalParameterList))) SEMI block))) (RULE formalParameterList (BLOCK (ALT LPAREN formalParameterSection (* (BLOCK (ALT SEMI formalParameterSection))) RPAREN))) (RULE formalParameterSection (BLOCK (ALT parameterGroup) (ALT VAR parameterGroup) (ALT FUNCTION parameterGroup) (ALT PROCEDURE parameterGroup))) (RULE parameterGroup (BLOCK (ALT identifierList COLON typeIdentifier))) (RULE identifierList (BLOCK (ALT identifier (* (BLOCK (ALT COMMA identifier)))))) (RULE constList (BLOCK (ALT constant (* (BLOCK (ALT COMMA constant)))))) (RULE functionDeclaration (BLOCK (ALT FUNCTION identifier (? (BLOCK (ALT formalParameterList))) COLON resultType SEMI block))) (RULE resultType (BLOCK (ALT typeIdentifier))) (RULE statement (BLOCK (ALT label COLON unlabelledStatement) (ALT unlabelledStatement))) (RULE unlabelledStatement (BLOCK (ALT simpleStatement) (ALT structuredStatement))) (RULE simpleStatement (BLOCK (ALT assignmentStatement) (ALT procedureStatement) (ALT gotoStatement) (ALT emptyStatement_))) (RULE assignmentStatement (BLOCK (ALT variable ASSIGN expression))) (RULE variable (BLOCK (ALT (BLOCK (ALT AT identifier) (ALT identifier)) (* (BLOCK (ALT LBRACK expression (* (BLOCK (ALT COMMA expression))) RBRACK) (ALT LBRACK2 expression (* (BLOCK (ALT COMMA expression))) RBRACK2) (ALT DOT identifier) (ALT POINTER)))))) (RULE expression (BLOCK (ALT simpleExpression (? (BLOCK (ALT relationaloperator expression)))))) (RULE relationaloperator (BLOCK (ALT (SET EQUAL NOT_EQUAL LT LE GE GT IN)))) (RULE simpleExpression (BLOCK (ALT term (? (BLOCK (ALT additiveoperator simpleExpression)))))) (RULE additiveoperator (BLOCK (ALT (SET PLUS MINUS OR)))) (RULE term (BLOCK (ALT signedFactor (? (BLOCK (ALT multiplicativeoperator term)))))) (RULE multiplicativeoperator (BLOCK (ALT (SET STAR SLASH DIV MOD AND)))) (RULE signedFactor (BLOCK (ALT (? (BLOCK (ALT (SET PLUS MINUS)))) factor))) (RULE factor (BLOCK (ALT variable) (ALT LPAREN expression RPAREN) (ALT functionDesignator) (ALT unsignedConstant) (ALT set_) (ALT NOT factor) (ALT bool_))) (RULE unsignedConstant (BLOCK (ALT unsignedNumber) (ALT constantChr) (ALT string) (ALT NIL))) (RULE functionDesignator (BLOCK (ALT identifier LPAREN parameterList RPAREN))) (RULE parameterList (BLOCK (ALT actualParameter (* (BLOCK (ALT COMMA actualParameter)))))) (RULE set_ (BLOCK (ALT LBRACK elementList RBRACK) (ALT LBRACK2 elementList RBRACK2))) (RULE elementList (BLOCK (ALT element (* (BLOCK (ALT COMMA element)))) (ALT EPSILON))) (RULE element (BLOCK (ALT expression (? (BLOCK (ALT DOTDOT expression)))))) (RULE procedureStatement (BLOCK (ALT identifier (? (BLOCK (ALT LPAREN parameterList RPAREN)))))) (RULE actualParameter (BLOCK (ALT expression (* (BLOCK (ALT parameterwidth)))))) (RULE parameterwidth (BLOCK (ALT COLON expression))) (RULE gotoStatement (BLOCK (ALT GOTO label))) (RULE emptyStatement_ (BLOCK (ALT EPSILON))) (RULE empty_ (BLOCK (ALT EPSILON))) (RULE structuredStatement (BLOCK (ALT compoundStatement) (ALT conditionalStatement) (ALT repetetiveStatement) (ALT withStatement))) (RULE compoundStatement (BLOCK (ALT BEGIN statements END))) (RULE statements (BLOCK (ALT statement (* (BLOCK (ALT SEMI statement)))))) (RULE conditionalStatement (BLOCK (ALT ifStatement) (ALT caseStatement))) (RULE ifStatement (BLOCK (ALT IF expression THEN statement (? (BLOCK (ALT ELSE statement)))))) (RULE caseStatement (BLOCK (ALT CASE expression OF caseListElement (* (BLOCK (ALT SEMI caseListElement))) (? (BLOCK (ALT SEMI ELSE statements))) END))) (RULE caseListElement (BLOCK (ALT constList COLON statement))) (RULE repetetiveStatement (BLOCK (ALT whileStatement) (ALT repeatStatement) (ALT forStatement))) (RULE whileStatement (BLOCK (ALT WHILE expression DO statement))) (RULE repeatStatement (BLOCK (ALT REPEAT statements UNTIL expression))) (RULE forStatement (BLOCK (ALT FOR identifier ASSIGN forList DO statement))) (RULE forList (BLOCK (ALT initialValue (SET TO DOWNTO) finalValue))) (RULE initialValue (BLOCK (ALT expression))) (RULE finalValue (BLOCK (ALT expression))) (RULE withStatement (BLOCK (ALT WITH recordVariableList DO statement))) (RULE recordVariableList (BLOCK (ALT variable (* (BLOCK (ALT COMMA variable)))))) (RULE AND (BLOCK (ALT 'AND'))) (RULE ARRAY (BLOCK (ALT 'ARRAY'))) (RULE BEGIN (BLOCK (ALT 'BEGIN'))) (RULE BOOLEAN (BLOCK (ALT 'BOOLEAN'))) (RULE CASE (BLOCK (ALT 'CASE'))) (RULE CHAR (BLOCK (ALT 'CHAR'))) (RULE CHR (BLOCK (ALT 'CHR'))) (RULE CONST (BLOCK (ALT 'CONST'))) (RULE DIV (BLOCK (ALT 'DIV'))) (RULE DO (BLOCK (ALT 'DO'))) (RULE DOWNTO (BLOCK (ALT 'DOWNTO'))) (RULE ELSE (BLOCK (ALT 'ELSE'))) (RULE END (BLOCK (ALT 'END'))) (RULE FILE (BLOCK (ALT 'FILE'))) (RULE FOR (BLOCK (ALT 'FOR'))) (RULE FUNCTION (BLOCK (ALT 'FUNCTION'))) (RULE GOTO (BLOCK (ALT 'GOTO'))) (RULE IF (BLOCK (ALT 'IF'))) (RULE IN (BLOCK (ALT 'IN'))) (RULE INTEGER (BLOCK (ALT 'INTEGER'))) (RULE LABEL (BLOCK (ALT 'LABEL'))) (RULE MOD (BLOCK (ALT 'MOD'))) (RULE NIL (BLOCK (ALT 'NIL'))) (RULE NOT (BLOCK (ALT 'NOT'))) (RULE OF (BLOCK (ALT 'OF'))) (RULE OR (BLOCK (ALT 'OR'))) (RULE PACKED (BLOCK (ALT 'PACKED'))) (RULE PROCEDURE (BLOCK (ALT 'PROCEDURE'))) (RULE PROGRAM (BLOCK (ALT 'PROGRAM'))) (RULE REAL (BLOCK (ALT 'REAL'))) (RULE RECORD (BLOCK (ALT 'RECORD'))) (RULE REPEAT (BLOCK (ALT 'REPEAT'))) (RULE SET (BLOCK (ALT 'SET'))) (RULE THEN (BLOCK (ALT 'THEN'))) (RULE TO (BLOCK (ALT 'TO'))) (RULE TYPE (BLOCK (ALT 'TYPE'))) (RULE UNTIL (BLOCK (ALT 'UNTIL'))) (RULE VAR (BLOCK (ALT 'VAR'))) (RULE WHILE (BLOCK (ALT 'WHILE'))) (RULE WITH (BLOCK (ALT 'WITH'))) (RULE PLUS (BLOCK (ALT '+'))) (RULE MINUS (BLOCK (ALT '-'))) (RULE STAR (BLOCK (ALT '*'))) (RULE SLASH (BLOCK (ALT '/'))) (RULE COMMA (BLOCK (ALT ','))) (RULE EQUAL (BLOCK (ALT '='))) (RULE NOT_EQUAL (BLOCK (ALT '<>'))) (RULE LT (BLOCK (ALT '<'))) (RULE LE (BLOCK (ALT '<='))) (RULE GE (BLOCK (ALT '>='))) (RULE GT (BLOCK (ALT '>'))) (RULE LBRACK (BLOCK (ALT '['))) (RULE LBRACK2 (BLOCK (ALT '(.'))) (RULE RBRACK (BLOCK (ALT ']'))) (RULE RBRACK2 (BLOCK (ALT '.)'))) (RULE POINTER (BLOCK (ALT '^'))) (RULE AT (BLOCK (ALT '@'))) (RULE DOTDOT (BLOCK (ALT '..'))) (RULE LCURLY (BLOCK (ALT '{'))) (RULE RCURLY (BLOCK (ALT '}'))) (RULE UNIT (BLOCK (ALT 'UNIT'))) (RULE INTERFACE (BLOCK (ALT 'INTERFACE'))) (RULE USES (BLOCK (ALT 'USES'))) (RULE STRING (BLOCK (ALT 'STRING'))) (RULE IMPLEMENTATION (BLOCK (ALT 'IMPLEMENTATION'))) (RULE TRUE (BLOCK (ALT 'TRUE'))) (RULE FALSE (BLOCK (ALT 'FALSE'))) (RULE COMMENT_1 (BLOCK (LEXER_ALT_ACTION (ALT '(*' (* (BLOCK (ALT .))) '*)') skip))) (RULE COMMENT_2 (BLOCK (LEXER_ALT_ACTION (ALT '{' (* (BLOCK (ALT .))) '}') skip))) (RULE IDENT (BLOCK (ALT (BLOCK (ALT (.. 'A' 'Z'))) (* (BLOCK (ALT (SET (.. 'A' 'Z') (.. '0' '9') '_'))))))) (RULE NUM_INT (BLOCK (ALT (+ (BLOCK (ALT (.. '0' '9'))))))) (RULE NUM_REAL (BLOCK (ALT (+ (BLOCK (ALT (.. '0' '9')))) (BLOCK (ALT (? (BLOCK (ALT '.' (+ (BLOCK (ALT (.. '0' '9')))) (? (BLOCK (ALT EXPONENT))))))) (ALT EXPONENT))))) (RULE EXPONENT (RULEMODIFIERS fragment) (BLOCK (ALT (BLOCK (ALT 'E')) (? (BLOCK (ALT (SET '+' '-')))) (+ (BLOCK (ALT (.. '0' '9'))))))) (RULE statementSequence (BLOCK (ALT statement (* (BLOCK (ALT ';' statement)))))) (RULE actualParameterList (BLOCK (ALT expression (* (BLOCK (ALT ',' expression)))))) (RULE procedureAndFunctionDeclaration (BLOCK (ALT 'procedure' identifier (? (BLOCK (ALT formalParameterList))) ';' block) (ALT 'function' identifier (? (BLOCK (ALT formalParameterList))) ':' typeIdentifier ';' block)))))
+2025-02-16 16:47:08:188 grammar LogManager.java:25 after extract implicit lexer =(COMBINED_GRAMMAR delphi (OPTIONS (= language Java)) (import pascal) (RULES (RULE program (BLOCK (ALT (+ (BLOCK (ALT classDeclaration))) EOF))) (RULE classDeclaration (BLOCK (ALT CLASS identifier (? (BLOCK (ALT EXTENDS identifier))) classBlock))) (RULE classBlock (BLOCK (ALT BEGIN (? (BLOCK (ALT PRIVATE (? (BLOCK (ALT fieldList)))))) (? (BLOCK (ALT PUBLIC (+ (BLOCK (ALT fieldList) (ALT methodList)))))) (? (BLOCK (ALT PROTECTED (* (BLOCK (ALT fieldList) (ALT methodList)))))) END))) (RULE variableDeclaration (BLOCK (ALT (= id identifier) COLON typeIdentifier))) (RULE fieldList (BLOCK (ALT (+ (BLOCK (ALT variableDeclaration SEMI)))))) (RULE methodList (BLOCK (ALT (+ (BLOCK (ALT methodDeclaration SEMI)))))) (RULE methodDeclaration (BLOCK (ALT (? (BLOCK (ALT (SET VIRTUAL OVERRIDE)))) (BLOCK (ALT procedureAndFunctionDeclaration) (ALT constructorDeclaration) (ALT destructorDeclaration))))) (RULE constructorDeclaration (BLOCK (ALT CONSTRUCTOR identifier LPAREN (? (BLOCK (ALT formalParameterList))) RPAREN SEMI (? (BLOCK (ALT INHERITED identifier LPAREN (? (BLOCK (ALT actualParameterList))) RPAREN SEMI))) block))) (RULE destructorDeclaration (BLOCK (ALT DESTRUCTOR identifier SEMI (? (BLOCK (ALT INHERITED DESTROY SEMI))) block))) (RULE objectInstantiation (BLOCK (ALT identifier ASSIGN NEW identifier LPAREN (? (BLOCK (ALT actualParameterList))) RPAREN))) (RULE methodCall (BLOCK (ALT identifier DOT identifier LPAREN (? (BLOCK (ALT actualParameterList))) RPAREN))) (RULE fieldAccess (BLOCK (ALT identifier DOT identifier))) (RULE readStatement (BLOCK (ALT READLN LPAREN identifier (* (BLOCK (ALT COMMA identifier))) RPAREN))) (RULE writeStatement (BLOCK (ALT WRITELN LPAREN (BLOCK (ALT STRING_LITERAL) (ALT expression)) (* (BLOCK (ALT COMMA (BLOCK (ALT STRING_LITERAL) (ALT expression))))) RPAREN))) (RULE identifier (BLOCK (ALT IDENTIFIER))) (RULE typeIdentifier (BLOCK (ALT IDENTIFIER))) (RULE programHeading (BLOCK (ALT PROGRAM identifier (? (BLOCK (ALT LPAREN identifierList RPAREN))) SEMI) (ALT UNIT identifier SEMI))) (RULE block (BLOCK (ALT (* (BLOCK (ALT labelDeclarationPart) (ALT constantDefinitionPart) (ALT typeDefinitionPart) (ALT variableDeclarationPart) (ALT procedureAndFunctionDeclarationPart) (ALT usesUnitsPart) (ALT IMPLEMENTATION))) compoundStatement))) (RULE usesUnitsPart (BLOCK (ALT USES identifierList SEMI))) (RULE labelDeclarationPart (BLOCK (ALT LABEL label (* (BLOCK (ALT COMMA label))) SEMI))) (RULE label (BLOCK (ALT unsignedInteger))) (RULE constantDefinitionPart (BLOCK (ALT CONST (+ (BLOCK (ALT constantDefinition SEMI)))))) (RULE constantDefinition (BLOCK (ALT identifier EQUAL constant))) (RULE constantChr (BLOCK (ALT CHR LPAREN unsignedInteger RPAREN))) (RULE constant (BLOCK (ALT unsignedNumber) (ALT sign unsignedNumber) (ALT identifier) (ALT sign identifier) (ALT string) (ALT constantChr))) (RULE unsignedNumber (BLOCK (ALT unsignedInteger) (ALT unsignedReal))) (RULE unsignedInteger (BLOCK (ALT NUM_INT))) (RULE unsignedReal (BLOCK (ALT NUM_REAL))) (RULE sign (BLOCK (ALT (SET PLUS MINUS)))) (RULE bool_ (BLOCK (ALT (SET TRUE FALSE)))) (RULE string (BLOCK (ALT STRING_LITERAL))) (RULE typeDefinitionPart (BLOCK (ALT TYPE (+ (BLOCK (ALT typeDefinition SEMI)))))) (RULE typeDefinition (BLOCK (ALT identifier EQUAL (BLOCK (ALT type_) (ALT functionType) (ALT procedureType))))) (RULE functionType (BLOCK (ALT FUNCTION (? (BLOCK (ALT formalParameterList))) COLON resultType))) (RULE procedureType (BLOCK (ALT PROCEDURE (? (BLOCK (ALT formalParameterList)))))) (RULE type_ (BLOCK (ALT simpleType) (ALT structuredType) (ALT pointerType))) (RULE simpleType (BLOCK (ALT scalarType) (ALT subrangeType) (ALT typeIdentifier) (ALT stringtype))) (RULE scalarType (BLOCK (ALT LPAREN identifierList RPAREN))) (RULE subrangeType (BLOCK (ALT constant DOTDOT constant))) (RULE structuredType (BLOCK (ALT PACKED unpackedStructuredType) (ALT unpackedStructuredType))) (RULE unpackedStructuredType (BLOCK (ALT arrayType) (ALT recordType) (ALT setType) (ALT fileType))) (RULE stringtype (BLOCK (ALT STRING LBRACK (BLOCK (ALT identifier) (ALT unsignedNumber)) RBRACK))) (RULE arrayType (BLOCK (ALT ARRAY LBRACK typeList RBRACK OF componentType) (ALT ARRAY LBRACK2 typeList RBRACK2 OF componentType))) (RULE typeList (BLOCK (ALT indexType (* (BLOCK (ALT COMMA indexType)))))) (RULE indexType (BLOCK (ALT simpleType))) (RULE componentType (BLOCK (ALT type_))) (RULE recordType (BLOCK (ALT RECORD (? (BLOCK (ALT fieldList))) END))) (RULE fixedPart (BLOCK (ALT recordSection (* (BLOCK (ALT SEMI recordSection)))))) (RULE recordSection (BLOCK (ALT identifierList COLON type_))) (RULE variantPart (BLOCK (ALT CASE tag OF variant (* (BLOCK (ALT SEMI variant)))))) (RULE tag (BLOCK (ALT identifier COLON typeIdentifier) (ALT typeIdentifier))) (RULE variant (BLOCK (ALT constList COLON LPAREN fieldList RPAREN))) (RULE setType (BLOCK (ALT SET OF baseType))) (RULE baseType (BLOCK (ALT simpleType))) (RULE fileType (BLOCK (ALT FILE OF type_) (ALT FILE))) (RULE pointerType (BLOCK (ALT POINTER typeIdentifier))) (RULE variableDeclarationPart (BLOCK (ALT VAR variableDeclaration (* (BLOCK (ALT SEMI variableDeclaration))) SEMI))) (RULE procedureAndFunctionDeclarationPart (BLOCK (ALT procedureOrFunctionDeclaration SEMI))) (RULE procedureOrFunctionDeclaration (BLOCK (ALT procedureDeclaration) (ALT functionDeclaration))) (RULE procedureDeclaration (BLOCK (ALT PROCEDURE identifier (? (BLOCK (ALT formalParameterList))) SEMI block))) (RULE formalParameterList (BLOCK (ALT LPAREN formalParameterSection (* (BLOCK (ALT SEMI formalParameterSection))) RPAREN))) (RULE formalParameterSection (BLOCK (ALT parameterGroup) (ALT VAR parameterGroup) (ALT FUNCTION parameterGroup) (ALT PROCEDURE parameterGroup))) (RULE parameterGroup (BLOCK (ALT identifierList COLON typeIdentifier))) (RULE identifierList (BLOCK (ALT identifier (* (BLOCK (ALT COMMA identifier)))))) (RULE constList (BLOCK (ALT constant (* (BLOCK (ALT COMMA constant)))))) (RULE functionDeclaration (BLOCK (ALT FUNCTION identifier (? (BLOCK (ALT formalParameterList))) COLON resultType SEMI block))) (RULE resultType (BLOCK (ALT typeIdentifier))) (RULE statement (BLOCK (ALT label COLON unlabelledStatement) (ALT unlabelledStatement))) (RULE unlabelledStatement (BLOCK (ALT simpleStatement) (ALT structuredStatement))) (RULE simpleStatement (BLOCK (ALT assignmentStatement) (ALT procedureStatement) (ALT gotoStatement) (ALT emptyStatement_))) (RULE assignmentStatement (BLOCK (ALT variable ASSIGN expression))) (RULE variable (BLOCK (ALT (BLOCK (ALT AT identifier) (ALT identifier)) (* (BLOCK (ALT LBRACK expression (* (BLOCK (ALT COMMA expression))) RBRACK) (ALT LBRACK2 expression (* (BLOCK (ALT COMMA expression))) RBRACK2) (ALT DOT identifier) (ALT POINTER)))))) (RULE expression (BLOCK (ALT simpleExpression (? (BLOCK (ALT relationaloperator expression)))))) (RULE relationaloperator (BLOCK (ALT (SET EQUAL NOT_EQUAL LT LE GE GT IN)))) (RULE simpleExpression (BLOCK (ALT term (? (BLOCK (ALT additiveoperator simpleExpression)))))) (RULE additiveoperator (BLOCK (ALT (SET PLUS MINUS OR)))) (RULE term (BLOCK (ALT signedFactor (? (BLOCK (ALT multiplicativeoperator term)))))) (RULE multiplicativeoperator (BLOCK (ALT (SET STAR SLASH DIV MOD AND)))) (RULE signedFactor (BLOCK (ALT (? (BLOCK (ALT (SET PLUS MINUS)))) factor))) (RULE factor (BLOCK (ALT variable) (ALT LPAREN expression RPAREN) (ALT functionDesignator) (ALT unsignedConstant) (ALT set_) (ALT NOT factor) (ALT bool_))) (RULE unsignedConstant (BLOCK (ALT unsignedNumber) (ALT constantChr) (ALT string) (ALT NIL))) (RULE functionDesignator (BLOCK (ALT identifier LPAREN parameterList RPAREN))) (RULE parameterList (BLOCK (ALT actualParameter (* (BLOCK (ALT COMMA actualParameter)))))) (RULE set_ (BLOCK (ALT LBRACK elementList RBRACK) (ALT LBRACK2 elementList RBRACK2))) (RULE elementList (BLOCK (ALT element (* (BLOCK (ALT COMMA element)))) (ALT EPSILON))) (RULE element (BLOCK (ALT expression (? (BLOCK (ALT DOTDOT expression)))))) (RULE procedureStatement (BLOCK (ALT identifier (? (BLOCK (ALT LPAREN parameterList RPAREN)))))) (RULE actualParameter (BLOCK (ALT expression (* (BLOCK (ALT parameterwidth)))))) (RULE parameterwidth (BLOCK (ALT COLON expression))) (RULE gotoStatement (BLOCK (ALT GOTO label))) (RULE emptyStatement_ (BLOCK (ALT EPSILON))) (RULE empty_ (BLOCK (ALT EPSILON))) (RULE structuredStatement (BLOCK (ALT compoundStatement) (ALT conditionalStatement) (ALT repetetiveStatement) (ALT withStatement))) (RULE compoundStatement (BLOCK (ALT BEGIN statements END))) (RULE statements (BLOCK (ALT statement (* (BLOCK (ALT SEMI statement)))))) (RULE conditionalStatement (BLOCK (ALT ifStatement) (ALT caseStatement))) (RULE ifStatement (BLOCK (ALT IF expression THEN statement (? (BLOCK (ALT ELSE statement)))))) (RULE caseStatement (BLOCK (ALT CASE expression OF caseListElement (* (BLOCK (ALT SEMI caseListElement))) (? (BLOCK (ALT SEMI ELSE statements))) END))) (RULE caseListElement (BLOCK (ALT constList COLON statement))) (RULE repetetiveStatement (BLOCK (ALT whileStatement) (ALT repeatStatement) (ALT forStatement))) (RULE whileStatement (BLOCK (ALT WHILE expression DO statement))) (RULE repeatStatement (BLOCK (ALT REPEAT statements UNTIL expression))) (RULE forStatement (BLOCK (ALT FOR identifier ASSIGN forList DO statement))) (RULE forList (BLOCK (ALT initialValue (SET TO DOWNTO) finalValue))) (RULE initialValue (BLOCK (ALT expression))) (RULE finalValue (BLOCK (ALT expression))) (RULE withStatement (BLOCK (ALT WITH recordVariableList DO statement))) (RULE recordVariableList (BLOCK (ALT variable (* (BLOCK (ALT COMMA variable)))))) (RULE statementSequence (BLOCK (ALT statement (* (BLOCK (ALT ';' statement)))))) (RULE actualParameterList (BLOCK (ALT expression (* (BLOCK (ALT ',' expression)))))) (RULE procedureAndFunctionDeclaration (BLOCK (ALT 'procedure' identifier (? (BLOCK (ALT formalParameterList))) ';' block) (ALT 'function' identifier (? (BLOCK (ALT formalParameterList))) ':' typeIdentifier ';' block)))))
+2025-02-16 16:47:08:188 grammar LogManager.java:25 lexer =(LEXER_GRAMMAR delphiLexer (OPTIONS (= language Java)) (RULES (RULE T__0 (BLOCK (ALT 'procedure'))) (RULE T__1 (BLOCK (ALT 'function'))) (RULE CLASS (BLOCK (ALT 'CLASS'))) (RULE EXTENDS (BLOCK (ALT 'EXTENDS'))) (RULE VIRTUAL (BLOCK (ALT 'VIRTUAL'))) (RULE OVERRIDE (BLOCK (ALT 'OVERRIDE'))) (RULE CONSTRUCTOR (BLOCK (ALT 'CONSTRUCTOR'))) (RULE DESTRUCTOR (BLOCK (ALT 'DESTRUCTOR'))) (RULE INHERITED (BLOCK (ALT 'INHERITED'))) (RULE DESTROY (BLOCK (ALT 'DESTROY'))) (RULE NEW (BLOCK (ALT 'NEW'))) (RULE READLN (BLOCK (ALT 'READLN'))) (RULE WRITELN (BLOCK (ALT 'WRITELN'))) (RULE PUBLIC (BLOCK (ALT 'PUBLIC'))) (RULE PRIVATE (BLOCK (ALT 'PRIVATE'))) (RULE PROTECTED (BLOCK (ALT 'PROTECTED'))) (RULE IDENTIFIER (BLOCK (ALT [a-zA-Z_] (* (BLOCK (ALT [a-zA-Z0-9_])))))) (RULE STRING_LITERAL (BLOCK (ALT '"' (* (BLOCK (ALT .))) '"'))) (RULE SEMI (BLOCK (ALT ';'))) (RULE COLON (BLOCK (ALT ':'))) (RULE LPAREN (BLOCK (ALT '('))) (RULE RPAREN (BLOCK (ALT ')'))) (RULE ASSIGN (BLOCK (ALT ':='))) (RULE DOT (BLOCK (ALT '.'))) (RULE WS (BLOCK (LEXER_ALT_ACTION (ALT (+ (BLOCK (ALT [ \t\r\n])))) skip))) (RULE AND (BLOCK (ALT 'AND'))) (RULE ARRAY (BLOCK (ALT 'ARRAY'))) (RULE BEGIN (BLOCK (ALT 'BEGIN'))) (RULE BOOLEAN (BLOCK (ALT 'BOOLEAN'))) (RULE CASE (BLOCK (ALT 'CASE'))) (RULE CHAR (BLOCK (ALT 'CHAR'))) (RULE CHR (BLOCK (ALT 'CHR'))) (RULE CONST (BLOCK (ALT 'CONST'))) (RULE DIV (BLOCK (ALT 'DIV'))) (RULE DO (BLOCK (ALT 'DO'))) (RULE DOWNTO (BLOCK (ALT 'DOWNTO'))) (RULE ELSE (BLOCK (ALT 'ELSE'))) (RULE END (BLOCK (ALT 'END'))) (RULE FILE (BLOCK (ALT 'FILE'))) (RULE FOR (BLOCK (ALT 'FOR'))) (RULE FUNCTION (BLOCK (ALT 'FUNCTION'))) (RULE GOTO (BLOCK (ALT 'GOTO'))) (RULE IF (BLOCK (ALT 'IF'))) (RULE IN (BLOCK (ALT 'IN'))) (RULE INTEGER (BLOCK (ALT 'INTEGER'))) (RULE LABEL (BLOCK (ALT 'LABEL'))) (RULE MOD (BLOCK (ALT 'MOD'))) (RULE NIL (BLOCK (ALT 'NIL'))) (RULE NOT (BLOCK (ALT 'NOT'))) (RULE OF (BLOCK (ALT 'OF'))) (RULE OR (BLOCK (ALT 'OR'))) (RULE PACKED (BLOCK (ALT 'PACKED'))) (RULE PROCEDURE (BLOCK (ALT 'PROCEDURE'))) (RULE PROGRAM (BLOCK (ALT 'PROGRAM'))) (RULE REAL (BLOCK (ALT 'REAL'))) (RULE RECORD (BLOCK (ALT 'RECORD'))) (RULE REPEAT (BLOCK (ALT 'REPEAT'))) (RULE SET (BLOCK (ALT 'SET'))) (RULE THEN (BLOCK (ALT 'THEN'))) (RULE TO (BLOCK (ALT 'TO'))) (RULE TYPE (BLOCK (ALT 'TYPE'))) (RULE UNTIL (BLOCK (ALT 'UNTIL'))) (RULE VAR (BLOCK (ALT 'VAR'))) (RULE WHILE (BLOCK (ALT 'WHILE'))) (RULE WITH (BLOCK (ALT 'WITH'))) (RULE PLUS (BLOCK (ALT '+'))) (RULE MINUS (BLOCK (ALT '-'))) (RULE STAR (BLOCK (ALT '*'))) (RULE SLASH (BLOCK (ALT '/'))) (RULE COMMA (BLOCK (ALT ','))) (RULE EQUAL (BLOCK (ALT '='))) (RULE NOT_EQUAL (BLOCK (ALT '<>'))) (RULE LT (BLOCK (ALT '<'))) (RULE LE (BLOCK (ALT '<='))) (RULE GE (BLOCK (ALT '>='))) (RULE GT (BLOCK (ALT '>'))) (RULE LBRACK (BLOCK (ALT '['))) (RULE LBRACK2 (BLOCK (ALT '(.'))) (RULE RBRACK (BLOCK (ALT ']'))) (RULE RBRACK2 (BLOCK (ALT '.)'))) (RULE POINTER (BLOCK (ALT '^'))) (RULE AT (BLOCK (ALT '@'))) (RULE DOTDOT (BLOCK (ALT '..'))) (RULE LCURLY (BLOCK (ALT '{'))) (RULE RCURLY (BLOCK (ALT '}'))) (RULE UNIT (BLOCK (ALT 'UNIT'))) (RULE INTERFACE (BLOCK (ALT 'INTERFACE'))) (RULE USES (BLOCK (ALT 'USES'))) (RULE STRING (BLOCK (ALT 'STRING'))) (RULE IMPLEMENTATION (BLOCK (ALT 'IMPLEMENTATION'))) (RULE TRUE (BLOCK (ALT 'TRUE'))) (RULE FALSE (BLOCK (ALT 'FALSE'))) (RULE COMMENT_1 (BLOCK (LEXER_ALT_ACTION (ALT '(*' (* (BLOCK (ALT .))) '*)') skip))) (RULE COMMENT_2 (BLOCK (LEXER_ALT_ACTION (ALT '{' (* (BLOCK (ALT .))) '}') skip))) (RULE IDENT (BLOCK (ALT (BLOCK (ALT (.. 'A' 'Z'))) (* (BLOCK (ALT (SET (.. 'A' 'Z') (.. '0' '9') '_'))))))) (RULE NUM_INT (BLOCK (ALT (+ (BLOCK (ALT (.. '0' '9'))))))) (RULE NUM_REAL (BLOCK (ALT (+ (BLOCK (ALT (.. '0' '9')))) (BLOCK (ALT (? (BLOCK (ALT '.' (+ (BLOCK (ALT (.. '0' '9')))) (? (BLOCK (ALT EXPONENT))))))) (ALT EXPONENT))))) (RULE EXPONENT (RULEMODIFIERS fragment) (BLOCK (ALT (BLOCK (ALT 'E')) (? (BLOCK (ALT (SET '+' '-')))) (+ (BLOCK (ALT (.. '0' '9')))))))))
+2025-02-16 16:47:08:286 semantics LogManager.java:25 tokens={EOF=-1, T__0=1, T__1=2, CLASS=3, EXTENDS=4, VIRTUAL=5, OVERRIDE=6, CONSTRUCTOR=7, DESTRUCTOR=8, INHERITED=9, DESTROY=10, NEW=11, READLN=12, WRITELN=13, PUBLIC=14, PRIVATE=15, PROTECTED=16, IDENTIFIER=17, STRING_LITERAL=18, SEMI=19, COLON=20, LPAREN=21, RPAREN=22, ASSIGN=23, DOT=24, WS=25, AND=26, ARRAY=27, BEGIN=28, BOOLEAN=29, CASE=30, CHAR=31, CHR=32, CONST=33, DIV=34, DO=35, DOWNTO=36, ELSE=37, END=38, FILE=39, FOR=40, FUNCTION=41, GOTO=42, IF=43, IN=44, INTEGER=45, LABEL=46, MOD=47, NIL=48, NOT=49, OF=50, OR=51, PACKED=52, PROCEDURE=53, PROGRAM=54, REAL=55, RECORD=56, REPEAT=57, SET=58, THEN=59, TO=60, TYPE=61, UNTIL=62, VAR=63, WHILE=64, WITH=65, PLUS=66, MINUS=67, STAR=68, SLASH=69, COMMA=70, EQUAL=71, NOT_EQUAL=72, LT=73, LE=74, GE=75, GT=76, LBRACK=77, LBRACK2=78, RBRACK=79, RBRACK2=80, POINTER=81, AT=82, DOTDOT=83, LCURLY=84, RCURLY=85, UNIT=86, INTERFACE=87, USES=88, STRING=89, IMPLEMENTATION=90, TRUE=91, FALSE=92, COMMENT_1=93, COMMENT_2=94, IDENT=95, NUM_INT=96, NUM_REAL=97}
+2025-02-16 16:47:08:286 semantics LogManager.java:25 strings={'procedure'=1, 'function'=2, 'CLASS'=3, 'EXTENDS'=4, 'VIRTUAL'=5, 'OVERRIDE'=6, 'CONSTRUCTOR'=7, 'DESTRUCTOR'=8, 'INHERITED'=9, 'DESTROY'=10, 'NEW'=11, 'READLN'=12, 'WRITELN'=13, 'PUBLIC'=14, 'PRIVATE'=15, 'PROTECTED'=16, ';'=19, ':'=20, '('=21, ')'=22, ':='=23, '.'=24, 'AND'=26, 'ARRAY'=27, 'BEGIN'=28, 'BOOLEAN'=29, 'CASE'=30, 'CHAR'=31, 'CHR'=32, 'CONST'=33, 'DIV'=34, 'DO'=35, 'DOWNTO'=36, 'ELSE'=37, 'END'=38, 'FILE'=39, 'FOR'=40, 'FUNCTION'=41, 'GOTO'=42, 'IF'=43, 'IN'=44, 'INTEGER'=45, 'LABEL'=46, 'MOD'=47, 'NIL'=48, 'NOT'=49, 'OF'=50, 'OR'=51, 'PACKED'=52, 'PROCEDURE'=53, 'PROGRAM'=54, 'REAL'=55, 'RECORD'=56, 'REPEAT'=57, 'SET'=58, 'THEN'=59, 'TO'=60, 'TYPE'=61, 'UNTIL'=62, 'VAR'=63, 'WHILE'=64, 'WITH'=65, '+'=66, '-'=67, '*'=68, '/'=69, ','=70, '='=71, '<>'=72, '<'=73, '<='=74, '>='=75, '>'=76, '['=77, '(.'=78, ']'=79, '.)'=80, '^'=81, '@'=82, '..'=83, '{'=84, '}'=85, 'UNIT'=86, 'INTERFACE'=87, 'USES'=88, 'STRING'=89, 'IMPLEMENTATION'=90, 'TRUE'=91, 'FALSE'=92}
+2025-02-16 16:47:08:294 LL1 LogManager.java:25 
+DECISION 0 in rule program
+2025-02-16 16:47:08:295 LL1 LogManager.java:25 look=[3, <EOF>]
+2025-02-16 16:47:08:295 LL1 LogManager.java:25 LL(1)? true
+2025-02-16 16:47:08:295 LL1 LogManager.java:25 
+DECISION 1 in rule classDeclaration
+2025-02-16 16:47:08:295 LL1 LogManager.java:25 look=[4, 28]
+2025-02-16 16:47:08:295 LL1 LogManager.java:25 LL(1)? true
+2025-02-16 16:47:08:295 LL1 LogManager.java:25 
+DECISION 2 in rule classBlock
+2025-02-16 16:47:08:295 LL1 LogManager.java:25 look=[17, {14, 16, 38}]
+2025-02-16 16:47:08:295 LL1 LogManager.java:25 LL(1)? true
+2025-02-16 16:47:08:295 LL1 LogManager.java:25 
+DECISION 3 in rule classBlock
+2025-02-16 16:47:08:295 LL1 LogManager.java:25 look=[15, {14, 16, 38}]
+2025-02-16 16:47:08:295 LL1 LogManager.java:25 LL(1)? true
+2025-02-16 16:47:08:295 LL1 LogManager.java:25 
+DECISION 4 in rule classBlock
+2025-02-16 16:47:08:295 LL1 LogManager.java:25 look=[17, {1..2, 5..8}]
+2025-02-16 16:47:08:295 LL1 LogManager.java:25 LL(1)? true
+2025-02-16 16:47:08:295 LL1 LogManager.java:25 
+DECISION 5 in rule classBlock
+2025-02-16 16:47:08:295 LL1 LogManager.java:25 look=[{1..2, 5..8, 17}, {16, 38}]
+2025-02-16 16:47:08:295 LL1 LogManager.java:25 LL(1)? true
+2025-02-16 16:47:08:295 LL1 LogManager.java:25 
+DECISION 6 in rule classBlock
+2025-02-16 16:47:08:295 LL1 LogManager.java:25 look=[14, {16, 38}]
+2025-02-16 16:47:08:295 LL1 LogManager.java:25 LL(1)? true
+2025-02-16 16:47:08:295 LL1 LogManager.java:25 
+DECISION 7 in rule classBlock
+2025-02-16 16:47:08:295 LL1 LogManager.java:25 look=[17, {1..2, 5..8}]
+2025-02-16 16:47:08:295 LL1 LogManager.java:25 LL(1)? true
+2025-02-16 16:47:08:295 LL1 LogManager.java:25 
+DECISION 8 in rule classBlock
+2025-02-16 16:47:08:295 LL1 LogManager.java:25 look=[{1..2, 5..8, 17}, 38]
+2025-02-16 16:47:08:295 LL1 LogManager.java:25 LL(1)? true
+2025-02-16 16:47:08:295 LL1 LogManager.java:25 
+DECISION 9 in rule classBlock
+2025-02-16 16:47:08:295 LL1 LogManager.java:25 look=[16, 38]
+2025-02-16 16:47:08:295 LL1 LogManager.java:25 LL(1)? true
+2025-02-16 16:47:08:295 LL1 LogManager.java:25 
+DECISION 10 in rule fieldList
+2025-02-16 16:47:08:295 LL1 LogManager.java:25 look=[17, {1..2, 5..8, 14, 16..17, 22, 38}]
+2025-02-16 16:47:08:295 LL1 LogManager.java:25 LL(1)? false
+2025-02-16 16:47:08:295 LL1 LogManager.java:25 
+DECISION 11 in rule methodList
+2025-02-16 16:47:08:295 LL1 LogManager.java:25 look=[{1..2, 5..8}, {1..2, 5..8, 16..17, 38}]
+2025-02-16 16:47:08:295 LL1 LogManager.java:25 LL(1)? false
+2025-02-16 16:47:08:295 LL1 LogManager.java:25 
+DECISION 12 in rule methodDeclaration
+2025-02-16 16:47:08:295 LL1 LogManager.java:25 look=[{5..6}, {1..2, 7..8}]
+2025-02-16 16:47:08:295 LL1 LogManager.java:25 LL(1)? true
+2025-02-16 16:47:08:295 LL1 LogManager.java:25 
+DECISION 13 in rule methodDeclaration
+2025-02-16 16:47:08:295 LL1 LogManager.java:25 look=[{1..2}, 7, 8]
+2025-02-16 16:47:08:295 LL1 LogManager.java:25 LL(1)? true
+2025-02-16 16:47:08:295 LL1 LogManager.java:25 
+DECISION 14 in rule constructorDeclaration
+2025-02-16 16:47:08:295 LL1 LogManager.java:25 look=[21, 22]
+2025-02-16 16:47:08:295 LL1 LogManager.java:25 LL(1)? true
+2025-02-16 16:47:08:295 LL1 LogManager.java:25 
+DECISION 15 in rule constructorDeclaration
+2025-02-16 16:47:08:295 LL1 LogManager.java:25 look=[{17..18, 21, 32, 48..49, 66..67, 77..78, 82, 91..92, 96..97}, 22]
+2025-02-16 16:47:08:295 LL1 LogManager.java:25 LL(1)? true
+2025-02-16 16:47:08:295 LL1 LogManager.java:25 
+DECISION 16 in rule constructorDeclaration
+2025-02-16 16:47:08:295 LL1 LogManager.java:25 look=[9, {28, 33, 41, 46, 53, 61, 63, 88, 90}]
+2025-02-16 16:47:08:295 LL1 LogManager.java:25 LL(1)? true
+2025-02-16 16:47:08:295 LL1 LogManager.java:25 
+DECISION 17 in rule destructorDeclaration
+2025-02-16 16:47:08:295 LL1 LogManager.java:25 look=[9, {28, 33, 41, 46, 53, 61, 63, 88, 90}]
+2025-02-16 16:47:08:295 LL1 LogManager.java:25 LL(1)? true
+2025-02-16 16:47:08:295 LL1 LogManager.java:25 
+DECISION 18 in rule objectInstantiation
+2025-02-16 16:47:08:295 LL1 LogManager.java:25 look=[{17..18, 21, 32, 48..49, 66..67, 77..78, 82, 91..92, 96..97}, 22]
+2025-02-16 16:47:08:295 LL1 LogManager.java:25 LL(1)? true
+2025-02-16 16:47:08:295 LL1 LogManager.java:25 
+DECISION 19 in rule methodCall
+2025-02-16 16:47:08:295 LL1 LogManager.java:25 look=[{17..18, 21, 32, 48..49, 66..67, 77..78, 82, 91..92, 96..97}, 22]
+2025-02-16 16:47:08:295 LL1 LogManager.java:25 LL(1)? true
+2025-02-16 16:47:08:295 LL1 LogManager.java:25 
+DECISION 20 in rule readStatement
+2025-02-16 16:47:08:295 LL1 LogManager.java:25 look=[70, 22]
+2025-02-16 16:47:08:295 LL1 LogManager.java:25 LL(1)? true
+2025-02-16 16:47:08:295 LL1 LogManager.java:25 
+DECISION 21 in rule writeStatement
+2025-02-16 16:47:08:295 LL1 LogManager.java:25 look=[18, {17..18, 21, 32, 48..49, 66..67, 77..78, 82, 91..92, 96..97}]
+2025-02-16 16:47:08:295 LL1 LogManager.java:25 LL(1)? false
+2025-02-16 16:47:08:295 LL1 LogManager.java:25 
+DECISION 22 in rule writeStatement
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 look=[18, {17..18, 21, 32, 48..49, 66..67, 77..78, 82, 91..92, 96..97}]
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 LL(1)? false
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 
+DECISION 23 in rule writeStatement
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 look=[70, 22]
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 LL(1)? true
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 
+DECISION 24 in rule programHeading
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 look=[21, 19]
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 LL(1)? true
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 
+DECISION 25 in rule programHeading
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 look=[54, 86]
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 LL(1)? true
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 
+DECISION 26 in rule block
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 look=[46, 33, 61, 63, {41, 53}, 88, 90]
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 LL(1)? true
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 
+DECISION 27 in rule block
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 look=[{33, 41, 46, 53, 61, 63, 88, 90}, 28]
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 LL(1)? true
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 
+DECISION 28 in rule labelDeclarationPart
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 look=[70, 19]
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 LL(1)? true
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 
+DECISION 29 in rule constantDefinitionPart
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 look=[17, {28, 33, 41, 46, 53, 61, 63, 88, 90}]
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 LL(1)? true
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 
+DECISION 30 in rule constant
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 look=[{96..97}, {66..67}, 17, {66..67}, 18, 32]
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 LL(1)? false
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 
+DECISION 31 in rule unsignedNumber
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 look=[96, 97]
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 LL(1)? true
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 
+DECISION 32 in rule typeDefinitionPart
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 look=[17, {28, 33, 41, 46, 53, 61, 63, 88, 90}]
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 LL(1)? true
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 
+DECISION 33 in rule typeDefinition
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 look=[{17..18, 21, 27, 32, 39, 52, 56, 58, 66..67, 81, 89, 96..97}, 41, 53]
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 LL(1)? true
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 
+DECISION 34 in rule functionType
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 look=[21, 20]
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 LL(1)? true
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 
+DECISION 35 in rule procedureType
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 look=[21, 19]
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 LL(1)? true
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 
+DECISION 36 in rule type_
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 look=[{17..18, 21, 32, 66..67, 89, 96..97}, {27, 39, 52, 56, 58}, 81]
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 LL(1)? true
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 
+DECISION 37 in rule simpleType
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 look=[21, {17..18, 32, 66..67, 96..97}, 17, 89]
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 LL(1)? false
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 
+DECISION 38 in rule structuredType
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 look=[52, {27, 39, 56, 58}]
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 LL(1)? true
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 
+DECISION 39 in rule unpackedStructuredType
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 look=[27, 56, 58, 39]
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 LL(1)? true
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 
+DECISION 40 in rule stringtype
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 look=[17, {96..97}]
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 LL(1)? true
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 
+DECISION 41 in rule arrayType
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 look=[27, 27]
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 LL(1)? false
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 
+DECISION 42 in rule typeList
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 look=[70, {79..80}]
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 LL(1)? true
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 
+DECISION 43 in rule recordType
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 look=[17, 38]
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 LL(1)? true
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 
+DECISION 44 in rule fixedPart
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 look=[19, <EOF>]
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 LL(1)? true
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 
+DECISION 45 in rule variantPart
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 look=[19, <EOF>]
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 LL(1)? true
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 
+DECISION 46 in rule tag
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 look=[17, 17]
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 LL(1)? false
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 
+DECISION 47 in rule fileType
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 look=[39, 39]
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 LL(1)? false
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 
+DECISION 48 in rule variableDeclarationPart
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 look=[19, 19]
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 LL(1)? false
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 
+DECISION 49 in rule procedureOrFunctionDeclaration
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 look=[53, 41]
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 LL(1)? true
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 
+DECISION 50 in rule procedureDeclaration
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 look=[21, 19]
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 LL(1)? true
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 
+DECISION 51 in rule formalParameterList
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 look=[19, 22]
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 LL(1)? true
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 
+DECISION 52 in rule formalParameterSection
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 look=[17, 63, 41, 53]
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 LL(1)? true
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 
+DECISION 53 in rule identifierList
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 look=[70, {19..20, 22}]
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 LL(1)? true
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 
+DECISION 54 in rule constList
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 look=[70, 20]
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 LL(1)? true
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 
+DECISION 55 in rule functionDeclaration
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 look=[21, 20]
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 LL(1)? true
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 
+DECISION 56 in rule statement
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 look=[96, {<EOF>, 17, 19, 28, 30, 37..38, 40, 42..43, 57, 62, 64..65, 82}]
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 LL(1)? true
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 
+DECISION 57 in rule unlabelledStatement
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 look=[{<EOF>, 17, 19, 37..38, 42, 62, 82}, {28, 30, 40, 43, 57, 64..65}]
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 LL(1)? true
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 
+DECISION 58 in rule simpleStatement
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 look=[{17, 82}, 17, 42, {<EOF>, 19, 37..38, 62}]
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 LL(1)? false
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 
+DECISION 59 in rule variable
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 look=[82, 17]
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 LL(1)? true
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 
+DECISION 60 in rule variable
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 look=[70, 79]
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 LL(1)? true
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 
+DECISION 61 in rule variable
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 look=[70, 80]
+2025-02-16 16:47:08:296 LL1 LogManager.java:25 LL(1)? true
+2025-02-16 16:47:08:297 LL1 LogManager.java:25 
+DECISION 62 in rule variable
+2025-02-16 16:47:08:297 LL1 LogManager.java:25 look=[77, 78, 24, 81]
+2025-02-16 16:47:08:297 LL1 LogManager.java:25 LL(1)? true
+2025-02-16 16:47:08:297 LL1 LogManager.java:25 
+DECISION 63 in rule variable
+2025-02-16 16:47:08:297 LL1 LogManager.java:25 look=[{24, 77..78, 81}, {<EOF>, 19..20, 22..23, 26, 34..38, 44, 47, 50..51, 59..60, 62, 66..76, 79..80, 83}]
+2025-02-16 16:47:08:297 LL1 LogManager.java:25 LL(1)? true
+2025-02-16 16:47:08:297 LL1 LogManager.java:25 
+DECISION 64 in rule expression
+2025-02-16 16:47:08:297 LL1 LogManager.java:25 look=[{44, 71..76}, {<EOF>, 19..20, 22, 35..38, 50, 59..60, 62, 70, 79..80, 83}]
+2025-02-16 16:47:08:297 LL1 LogManager.java:25 LL(1)? true
+2025-02-16 16:47:08:297 LL1 LogManager.java:25 
+DECISION 65 in rule simpleExpression
+2025-02-16 16:47:08:297 LL1 LogManager.java:25 look=[{51, 66..67}, {<EOF>, 19..20, 22, 35..38, 44, 50, 59..60, 62, 70..76, 79..80, 83}]
+2025-02-16 16:47:08:297 LL1 LogManager.java:25 LL(1)? true
+2025-02-16 16:47:08:297 LL1 LogManager.java:25 
+DECISION 66 in rule term
+2025-02-16 16:47:08:297 LL1 LogManager.java:25 look=[{26, 34, 47, 68..69}, {<EOF>, 19..20, 22, 35..38, 44, 50..51, 59..60, 62, 66..67, 70..76, 79..80, 83}]
+2025-02-16 16:47:08:297 LL1 LogManager.java:25 LL(1)? true
+2025-02-16 16:47:08:297 LL1 LogManager.java:25 
+DECISION 67 in rule signedFactor
+2025-02-16 16:47:08:297 LL1 LogManager.java:25 look=[{66..67}, {17..18, 21, 32, 48..49, 77..78, 82, 91..92, 96..97}]
+2025-02-16 16:47:08:297 LL1 LogManager.java:25 LL(1)? true
+2025-02-16 16:47:08:297 LL1 LogManager.java:25 
+DECISION 68 in rule factor
+2025-02-16 16:47:08:297 LL1 LogManager.java:25 look=[{17, 82}, 21, 17, {18, 32, 48, 96..97}, {77..78}, 49, {91..92}]
+2025-02-16 16:47:08:297 LL1 LogManager.java:25 LL(1)? false
+2025-02-16 16:47:08:297 LL1 LogManager.java:25 
+DECISION 69 in rule unsignedConstant
+2025-02-16 16:47:08:297 LL1 LogManager.java:25 look=[{96..97}, 32, 18, 48]
+2025-02-16 16:47:08:297 LL1 LogManager.java:25 LL(1)? true
+2025-02-16 16:47:08:297 LL1 LogManager.java:25 
+DECISION 70 in rule parameterList
+2025-02-16 16:47:08:297 LL1 LogManager.java:25 look=[70, 22]
+2025-02-16 16:47:08:297 LL1 LogManager.java:25 LL(1)? true
+2025-02-16 16:47:08:297 LL1 LogManager.java:25 
+DECISION 71 in rule set_
+2025-02-16 16:47:08:297 LL1 LogManager.java:25 look=[77, 78]
+2025-02-16 16:47:08:297 LL1 LogManager.java:25 LL(1)? true
+2025-02-16 16:47:08:297 LL1 LogManager.java:25 
+DECISION 72 in rule elementList
+2025-02-16 16:47:08:297 LL1 LogManager.java:25 look=[70, {79..80}]
+2025-02-16 16:47:08:297 LL1 LogManager.java:25 LL(1)? true
+2025-02-16 16:47:08:297 LL1 LogManager.java:25 
+DECISION 73 in rule elementList
+2025-02-16 16:47:08:297 LL1 LogManager.java:25 look=[{17..18, 21, 32, 48..49, 66..67, 77..78, 82, 91..92, 96..97}, {79..80}]
+2025-02-16 16:47:08:297 LL1 LogManager.java:25 LL(1)? true
+2025-02-16 16:47:08:297 LL1 LogManager.java:25 
+DECISION 74 in rule element
+2025-02-16 16:47:08:297 LL1 LogManager.java:25 look=[83, {70, 79..80}]
+2025-02-16 16:47:08:297 LL1 LogManager.java:25 LL(1)? true
+2025-02-16 16:47:08:297 LL1 LogManager.java:25 
+DECISION 75 in rule procedureStatement
+2025-02-16 16:47:08:297 LL1 LogManager.java:25 look=[21, {<EOF>, 19, 37..38, 62}]
+2025-02-16 16:47:08:297 LL1 LogManager.java:25 LL(1)? true
+2025-02-16 16:47:08:297 LL1 LogManager.java:25 
+DECISION 76 in rule actualParameter
+2025-02-16 16:47:08:297 LL1 LogManager.java:25 look=[20, {22, 70}]
+2025-02-16 16:47:08:297 LL1 LogManager.java:25 LL(1)? true
+2025-02-16 16:47:08:297 LL1 LogManager.java:25 
+DECISION 77 in rule structuredStatement
+2025-02-16 16:47:08:297 LL1 LogManager.java:25 look=[28, {30, 43}, {40, 57, 64}, 65]
+2025-02-16 16:47:08:297 LL1 LogManager.java:25 LL(1)? true
+2025-02-16 16:47:08:297 LL1 LogManager.java:25 
+DECISION 78 in rule statements
+2025-02-16 16:47:08:297 LL1 LogManager.java:25 look=[19, {38, 62}]
+2025-02-16 16:47:08:297 LL1 LogManager.java:25 LL(1)? true
+2025-02-16 16:47:08:297 LL1 LogManager.java:25 
+DECISION 79 in rule conditionalStatement
+2025-02-16 16:47:08:297 LL1 LogManager.java:25 look=[43, 30]
+2025-02-16 16:47:08:297 LL1 LogManager.java:25 LL(1)? true
+2025-02-16 16:47:08:297 LL1 LogManager.java:25 
+DECISION 80 in rule ifStatement
+2025-02-16 16:47:08:297 LL1 LogManager.java:25 look=[37, {<EOF>, 19, 37..38, 62}]
+2025-02-16 16:47:08:297 LL1 LogManager.java:25 LL(1)? false
+2025-02-16 16:47:08:297 LL1 LogManager.java:25 
+DECISION 81 in rule caseStatement
+2025-02-16 16:47:08:297 LL1 LogManager.java:25 look=[19, {19, 38}]
+2025-02-16 16:47:08:297 LL1 LogManager.java:25 LL(1)? false
+2025-02-16 16:47:08:297 LL1 LogManager.java:25 
+DECISION 82 in rule caseStatement
+2025-02-16 16:47:08:297 LL1 LogManager.java:25 look=[19, 38]
+2025-02-16 16:47:08:297 LL1 LogManager.java:25 LL(1)? true
+2025-02-16 16:47:08:297 LL1 LogManager.java:25 
+DECISION 83 in rule repetetiveStatement
+2025-02-16 16:47:08:297 LL1 LogManager.java:25 look=[64, 57, 40]
+2025-02-16 16:47:08:297 LL1 LogManager.java:25 LL(1)? true
+2025-02-16 16:47:08:297 LL1 LogManager.java:25 
+DECISION 84 in rule recordVariableList
+2025-02-16 16:47:08:297 LL1 LogManager.java:25 look=[70, 35]
+2025-02-16 16:47:08:297 LL1 LogManager.java:25 LL(1)? true
+2025-02-16 16:47:08:297 LL1 LogManager.java:25 
+DECISION 85 in rule statementSequence
+2025-02-16 16:47:08:297 LL1 LogManager.java:25 look=[19, <EOF>]
+2025-02-16 16:47:08:297 LL1 LogManager.java:25 LL(1)? true
+2025-02-16 16:47:08:297 LL1 LogManager.java:25 
+DECISION 86 in rule actualParameterList
+2025-02-16 16:47:08:297 LL1 LogManager.java:25 look=[70, 22]
+2025-02-16 16:47:08:297 LL1 LogManager.java:25 LL(1)? true
+2025-02-16 16:47:08:297 LL1 LogManager.java:25 
+DECISION 87 in rule procedureAndFunctionDeclaration
+2025-02-16 16:47:08:297 LL1 LogManager.java:25 look=[21, 19]
+2025-02-16 16:47:08:297 LL1 LogManager.java:25 LL(1)? true
+2025-02-16 16:47:08:297 LL1 LogManager.java:25 
+DECISION 88 in rule procedureAndFunctionDeclaration
+2025-02-16 16:47:08:297 LL1 LogManager.java:25 look=[21, 20]
+2025-02-16 16:47:08:297 LL1 LogManager.java:25 LL(1)? true
+2025-02-16 16:47:08:297 LL1 LogManager.java:25 
+DECISION 89 in rule procedureAndFunctionDeclaration
+2025-02-16 16:47:08:297 LL1 LogManager.java:25 look=[1, 2]
+2025-02-16 16:47:08:297 LL1 LogManager.java:25 LL(1)? true
