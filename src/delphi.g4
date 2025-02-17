@@ -76,20 +76,29 @@ statement:
 compoundStatement: BEGIN statementSequence END;
 
 // Lexer Rules
-CLASS: 'CLASS';
-EXTENDS: 'EXTENDS';
-VIRTUAL: 'VIRTUAL';
-OVERRIDE: 'OVERRIDE';
-CONSTRUCTOR: 'CONSTRUCTOR';
-DESTRUCTOR: 'DESTRUCTOR';
-INHERITED: 'INHERITED';
-DESTROY: 'DESTROY';
-NEW: 'NEW';
-READLN: 'READLN';
-WRITELN: 'WRITELN';
-PUBLIC: 'PUBLIC';
-PRIVATE: 'PRIVATE';
-PROTECTED: 'PROTECTED';
+PROGRAM: [pP][rR][oO][gG][rR][aA][mM];
+CLASS: [cC][lL][aA][sS][sS];
+EXTENDS: [eE][xX][tT][eE][nN][dD][sS];
+BEGIN: [bB][eE][gG][iI][nN];
+END: [eE][nN][dD];
+PUBLIC: [pP][uU][bB][lL][iI][cC];
+PRIVATE: [pP][rR][iI][vV][aA][tT];
+PROTECTED: [pP][rR][oO][tT][eE][cC][tT][eE][dD];
+CONSTRUCTOR:
+	[cC][oO][nN][sS][tT][rR][uU][cC][tT][oO][rR];
+DESTRUCTOR: [dD][eE][sS][tT][rR][uU][cC][tT][oO][rR];
+NEW: [nN][eE][wW];
+WRITELN: [wW][rR][iI][tT][eE][lL][nN];
+READLN: [rR][eE][aA][dD][lL][nN];
+VIRTUAL: [vV][iI][rR][tT][uU][aA][lL];
+OVERRIDE: [oO][vV][eE][rR][rR][iI][dD][eE];
+INHERITED: [iI][nN][hH][eE][rR][iI][tT][eE][dD];
+DESTROY: [dD][eE][sS][tT][rR][oO][yY];
+VAR: [vV][aA][rR];
+
+/*
+ VIRTUAL: 'virtual'; OVERRIDE: 'override'; INHERITED: 'inherited'; DESTROY: 'destroy'; VAR: 'var';
+ */
 
 identifier: IDENTIFIER;
 IDENTIFIER: [a-zA-Z_][a-zA-Z0-9_]*;
@@ -103,10 +112,6 @@ ASSIGN: ':=';
 DOT: '.';
 
 WS: [ \t\r\n]+ -> skip;
-PROGRAM: 'program';
-BEGIN: 'begin';
-END: 'end';
-VAR: 'var';
 
 /*grammar delphi;
  
@@ -148,9 +153,129 @@ VAR: 'var';
 
  
 
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
  // Enhanced field access fieldAccess: identifier DOT identifier;
  
  // IO specific rules readStatement: READLN LPAREN identifier (COMMA identifier)* RPAREN;
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
  
 
  
@@ -164,9 +289,129 @@ VAR: 'var';
 
  
 
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
  actualParameterList: expression (',' expression)*;
  
  statementSequence: statement (';' statement)*; block: (classDeclaration | statementSequence)+;
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
  
 
  
