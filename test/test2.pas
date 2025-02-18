@@ -1,4 +1,4 @@
-program Test2;
+program test2;
 
 class BankAccount
 private
@@ -30,11 +30,9 @@ var
 
 begin
     account := new BankAccount(1000);
-    writeln('Initial balance: ', account.GetBalance);
-
-    writeln('Enter deposit amount:');
+    writeln("Initial balance: ", account.GetBalance);
+    writeln("Enter deposit amount:");
     readln(amount);
     account.Deposit(amount);
-
-    writeln('New balance: ', account.GetBalance);
+    writeln("New balance: ", account.GetBalance);
 end.
