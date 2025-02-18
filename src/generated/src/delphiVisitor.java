@@ -16,6 +16,18 @@ public interface delphiVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitProgram(delphiParser.ProgramContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link delphiParser#programHeading}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitProgramHeading(delphiParser.ProgramHeadingContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link delphiParser#typeSection}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitTypeSection(delphiParser.TypeSectionContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link delphiParser#typeDeclaration}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -39,6 +51,12 @@ public interface delphiVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitClassBlock(delphiParser.ClassBlockContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link delphiParser#variablesSection}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitVariablesSection(delphiParser.VariablesSectionContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link delphiParser#variableDeclaration}.
 	 * @param ctx the parse tree
@@ -136,23 +154,23 @@ public interface delphiVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitExpression(delphiParser.ExpressionContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link delphiParser#statementSequence}.
+	 * Visit a parse tree produced by {@link delphiParser#simpleExpression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitStatementSequence(delphiParser.StatementSequenceContext ctx);
+	T visitSimpleExpression(delphiParser.SimpleExpressionContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link delphiParser#block}.
+	 * Visit a parse tree produced by {@link delphiParser#term}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitBlock(delphiParser.BlockContext ctx);
+	T visitTerm(delphiParser.TermContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link delphiParser#statement}.
+	 * Visit a parse tree produced by {@link delphiParser#factor}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitStatement(delphiParser.StatementContext ctx);
+	T visitFactor(delphiParser.FactorContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link delphiParser#compoundStatement}.
 	 * @param ctx the parse tree
@@ -160,15 +178,99 @@ public interface delphiVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitCompoundStatement(delphiParser.CompoundStatementContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link delphiParser#identifier}.
+	 * Visit a parse tree produced by {@link delphiParser#statementSequence}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitIdentifier(delphiParser.IdentifierContext ctx);
+	T visitStatementSequence(delphiParser.StatementSequenceContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link delphiParser#statement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitStatement(delphiParser.StatementContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link delphiParser#empty_statement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitEmpty_statement(delphiParser.Empty_statementContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link delphiParser#assignmentStatement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitAssignmentStatement(delphiParser.AssignmentStatementContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link delphiParser#procedureStatement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitProcedureStatement(delphiParser.ProcedureStatementContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link delphiParser#ifStatement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitIfStatement(delphiParser.IfStatementContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link delphiParser#whileStatement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitWhileStatement(delphiParser.WhileStatementContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link delphiParser#writeParameter}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitWriteParameter(delphiParser.WriteParameterContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link delphiParser#identifierList}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitIdentifierList(delphiParser.IdentifierListContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link delphiParser#typeIdentifier}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitTypeIdentifier(delphiParser.TypeIdentifierContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link delphiParser#identifier}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitIdentifier(delphiParser.IdentifierContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link delphiParser#number}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitNumber(delphiParser.NumberContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link delphiParser#relationalOperator}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitRelationalOperator(delphiParser.RelationalOperatorContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link delphiParser#additiveOperator}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitAdditiveOperator(delphiParser.AdditiveOperatorContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link delphiParser#multiplicativeOperator}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitMultiplicativeOperator(delphiParser.MultiplicativeOperatorContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link delphiParser#block}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitBlock(delphiParser.BlockContext ctx);
 }

@@ -10,7 +10,7 @@ This project implements a subset of Delphi features as an extension of Pascal us
 ## Prerequisites
 - Java JDK 8 or higher
 - ANTLR 4.9 or higher
-- Visual Studio Code (recommended)
+- Visual Studio Code
   - Java Extension Pack
   - ANTLR4 grammar syntax support
 
